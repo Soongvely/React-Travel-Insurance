@@ -1,0 +1,370 @@
+@media (min-width: 981px) {
+    .ui-datepicker-calendar th > .ui-state-default, .ui-datepicker-calendar td > .ui-state-default {
+        width: 30px;
+        height: 30px;
+    }
+}
+.ui-datepicker {
+    width: 300px !important;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+    border-radius: 8px;
+    padding: 20px 10px 5px 10px;
+    margin-top: 10px;
+    display: none;
+    background-color: #fff;
+}
+.ui-datepicker-multi::after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: '';
+}
+.ui-datepicker-multi.ui-datepicker-multi-1 .ui-datepicker-group {
+    width: 100%;
+}
+.ui-datepicker-multi.ui-datepicker-multi-2 .ui-datepicker-group {
+    width: 50%;
+}
+.ui-datepicker-multi.ui-datepicker-multi-3 .ui-datepicker-group {
+    width: 33.333333%;
+}
+.ui-datepicker-multi.ui-datepicker-multi-4 .ui-datepicker-group {
+    width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+    float: left;
+    padding: 30px 30px 24px;
+}
+.ui-datepicker-header {
+    position: relative;
+}
+.ui-datepicker-header .ui-corner-all {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.ui-datepicker-header .ui-corner-all span {
+    display: block;
+    text-indent: -9999px;
+}
+.ui-datepicker-header .ui-corner-all.ui-datepicker-prev {
+    left: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+}
+.ui-datepicker-header .ui-corner-all.ui-datepicker-prev::before {
+    display: block;
+    width: 32px;
+    height: 32px;
+    content: '';
+    background: url(https://cdns.tourvis.com/air/dist/images//svg/ico-picker-arrow-left-black.svg) center no-repeat;
+}
+.ui-datepicker-header .ui-corner-all.ui-datepicker-next {
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+}
+.ui-datepicker-header .ui-corner-all.ui-datepicker-next::before {
+    display: block;
+    width: 32px;
+    height: 32px;
+    content: '';
+    background: url(https://cdns.tourvis.com/air/dist/images//svg/ico-picker-arrow-right-black.svg) center no-repeat;
+}
+.ui-datepicker-title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.ui-datepicker-calendar {
+    width: 100%;
+}
+.ui-datepicker-calendar th, .ui-datepicker-calendar td {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 0;
+    position: relative;
+    width: 38px;
+    text-align: center;
+}
+.ui-datepicker-calendar th > .ui-state-default, .ui-datepicker-calendar td > .ui-state-default {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    padding: 7px 0;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+}
+.ui-datepicker-calendar th::after, .ui-datepicker-calendar td::after {
+    display: block;
+    padding-bottom: calc(100% + 0px);
+    content: '';
+}
+.ui-datepicker-calendar tr th {
+    color: #757575;
+}
+.ui-datepicker-calendar tr th span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+}
+.ui-datepicker-calendar tr .custom-holiday {
+    color: #ea4754;
+}
+.ui-datepicker-calendar tr .custom-holiday .ui-state-default {
+    color: #ea4754;
+}
+.ui-datepicker-calendar tr td:first-child.custom-between-day::before {
+    left: 0;
+    width: 150%;
+    transform: translate(0, -50%);
+}
+.ui-datepicker-calendar tr td:last-child.custom-between-day::before {
+    right: 0;
+    left: initial;
+    width: 150%;
+    transform: translate(0, -50%);
+}
+
+.ui-datepicker-calendar thead .ui-datepicker-week-end:nth-child(1) span, .ui-datepicker-calendar tbody .ui-datepicker-week-end:nth-of-type(1) {
+    color: #ea4754;
+}
+.ui-datepicker-calendar tbody .ui-datepicker-week-end:nth-of-type(1) .ui-state-default {
+    color: #ea4754;
+}
+.ui-datepicker-calendar thead .ui-datepicker-week-end:nth-last-of-type(1) span, .ui-datepicker-calendar tbody .ui-datepicker-week-end:nth-last-of-type(1) {
+    color: #1766FF;
+}
+.ui-datepicker-calendar tbody .ui-datepicker-week-end:nth-last-of-type(1) .ui-state-default {
+    color: #1766FF;
+}
+.ui-state-default {
+    z-index: 1;
+}
+.ui-state-default::before {
+    font-weight: 400;
+}
+.ui-datepicker-today .ui-state-default {
+    font-weight: 700;
+}
+.ui-datepicker-today .ui-state-default::before {
+    font-size: 0.65rem;
+    line-height: normal;
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    content: '오늘';
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #222;
+    font-weight: 500;
+}
+.ui-state-disabled.ui-datepicker-today .ui-state-default::before {
+    color: #e1e4e8 !important;
+}
+.ui-state-disabled.ui-datepicker-today .ui-state-default::after {
+    background-color: #e1e4e8 !important;
+}
+.ui-datepicker-today .ui-state-default::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -0.01rem;
+    margin-left: -0.1rem;
+    width: 0.2rem;
+    height: 0.2rem;
+    background: #000;
+    border-radius: 50%;
+}
+.ui-state-disabled .ui-state-default {
+    text-decoration: line-through;
+}
+.ui-state-disabled {
+    color: #e1e4e8 !important;
+}
+.ui-state-disabled .ui-state-default {
+    color: #e1e4e8 !important;
+}
+.ui-state-disabled::before {
+    opacity: .3;
+}
+.custom-same-day .ui-state-default {
+    color: #fff !important;
+    border-radius: 50%;
+    background-color: #1766FF;
+}
+.custom-same-day .ui-state-default::before {
+    font-size: 11px;
+    line-height: normal;
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    content: '출/도착';
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #1766FF;
+}
+.custom-start-day .ui-state-default {
+    color: #fff !important;
+    border-radius: 50%;
+    background-color: #1766FF;
+}
+.custom-start-day .ui-state-default::before {
+    font-size: 11px;
+    line-height: normal;
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    content: '출발일';
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #1766FF;
+}
+.custom-start-day + .custom-end-day::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 14px);
+    content: '';
+    transform: translate(-50%, -50%);
+    background-color: #fff2ff;
+}
+.custom-end-day::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: calc((100% - 14px)/2);
+    height: calc(100% - 14px);
+    content: '';
+    transform: translate(calc(-50% - 8px), -50%);
+    background-color: #fff2ff;
+}
+.custom-end-day .ui-state-default {
+    color: #fff !important;
+    border-radius: 50%;
+    background-color: #1766FF;
+}
+.custom-end-day .ui-state-default::before {
+    font-size: 11px;
+    line-height: normal;
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    content: '도착일';
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #1766FF;
+}
+.custom-between-day::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 200%;
+    height: calc(100% - 14px);
+    content: '';
+    transform: translate(-50%, -50%);
+    background-color: #fff2ff;
+}
+.custom-between-day .ui-state-default {
+    background-color: #fff2ff;
+}
+.custom-selected-day .ui-state-default {
+    color: #fff !important;
+    border-radius: 50%;
+    background-color: #1766FF;
+}
+.custom-selected-day .ui-state-default::before {
+    font-size: 11px;
+    line-height: normal;
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    content: '';
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #1766FF;
+}
+.custom-selected-day + .custom-selected-day::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 14px);
+    content: '';
+    transform: translate(-50%, -50%);
+    background-color: #fff2ff;
+}
+.custom-selected-day.multi1 .ui-state-default::before {
+    content: '여정1';
+}
+.custom-selected-day.multi1.multi2 .ui-state-default::before {
+    content: '여정1,2';
+}
+.custom-selected-day.multi1.multi2.multi3 .ui-state-default::before {
+    content: '여정1,2,3';
+}
+.custom-selected-day.multi1.multi2.multi3.multi4 .ui-state-default::before {
+    content: '여정1,2,3,4';
+}
+.custom-selected-day.multi2 .ui-state-default::before {
+    content: '여정2';
+}
+.custom-selected-day.multi2.multi3 .ui-state-default::before {
+    content: '여정2,3';
+}
+.custom-selected-day.multi2.multi3.multi4 .ui-state-default::before {
+    content: '여정2,3,4';
+}
+.custom-selected-day.multi3 .ui-state-default::before {
+    content: '여정3';
+}
+.custom-selected-day.multi3.multi4 .ui-state-default::before {
+    content: '여정3,4';
+}
+.custom-selected-day.multi4 .ui-state-default::before {
+    content: '여정4';
+}
+@media (min-width: 981px) {
+    .ui-datepicker-calendar th > .ui-state-default, .ui-datepicker-calendar td > .ui-state-default {
+        width: 30px;
+        height: 30px;
+    }
+    .ui-datepicker-calendar tr td:not(.ui-state-disabled) a {
+        cursor: pointer;
+    }
+    .ui-datepicker-calendar tr td:not(.ui-state-disabled) a:hover {
+        color: #1766FF;
+    }
+    .custom-start-day + .custom-end-day::before {
+        height: calc(30px);
+    }
+    .custom-between-day::before {
+        height: 30px;
+    }
+    .custom-end-day::before {
+        height: 30px;
+        transform: translate(calc(-50% - 10px), -50%);
+    }
+}
+@media (max-width: 980px) {
+    .ui-datepicker-calendar th::after, .ui-datepicker-calendar td::after {
+        padding-bottom: 100%;
+    }
+}

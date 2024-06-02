@@ -1,0 +1,1461 @@
+
+.plan-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 80%;
+    margin: 30px auto 0;
+}
+
+.plan-top p {
+    font-size: 16px;
+    color: var(--gray-txt1-color);
+}
+
+.plan-top .plan-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.plan-top .plan-btn .material-symbols-outlined {
+    font-size: 32px;
+}
+
+.plan-top .plan-btn .toggle {
+    position: relative;
+    width: 45px;
+    height: 25px;
+    background-color: var(--gray-txt3-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.plan-top .plan-btn .toggle::after {
+    position: absolute;
+    content: '';
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.plans-choice-wrap {
+    margin-top: 25px;
+}
+
+
+.plans-choice-wrap .plans-choice-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box {
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-title small {
+    color: var(--gray-txt1-color);
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-name {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-info >div span {
+    font-size: 18px;
+    color: var(--gray-txt2-color);
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price-dis-wrap {
+    display: flex;
+    color: var(--gray-txt2-color);
+    align-items: end;
+    justify-content: center;
+    margin-right: 5px;
+    bottom: 2px;
+    position: relative;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price-dis-wrap .price-dis-txt {
+    font-size: 13px;
+    color: #239ff8;
+    bottom: 2px;
+    position: relative;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price-dis-wrap .price-dis-per {
+    font-size: 16px;
+    color: #239ff8;
+    font-weight: 500;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price {
+    display:flex;color:var(--gray-txt2-color);align-items:center;justify-content:center;flex-direction:column;position:relative;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price .price-sub {
+    font-size: 16px;color:var(--gray-txt2-color);position:relative;top:4px;left:10px;text-decoration:line-through;line-height: 17px;
+    font-weight: 300;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price .price-tot {
+    font-size:14px;color:#222;font-weight:500;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price .price-tot-num {
+    font-size:24px;color:var(--main-color);font-weight:500;position: relative;top: 2px;
+}
+
+.plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price h4 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.plans-choice-wrap input:checked + label .radio {
+    border: 1.5px solid var(--main-color);
+}
+
+.plans-choice-wrap input:checked + label .radio::before {
+    color: var(--main-color);
+}
+
+.plan-btn label {
+    position: relative;
+    display: block;
+    /* width: 100px; */
+    background: #fff;
+    border-radius: 50px;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.plan-btn label input {
+    display: none;
+}
+
+.plan-btn label > div {
+    display: block;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.plan-btn label > div:after {
+    content: "";
+    display: block;
+    height: 28px;
+    width: 68px;
+    left: 2px;
+    top: 2px;
+    border-radius: 50px;
+    background: var(--gray-txt3-color);
+    transition: 0.20s;
+}
+
+.plan-btn label i {
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: 0.3s;
+}
+
+
+label input:checked ~ i {
+    top: 3px;
+    left: 43px;
+}
+
+label input:checked + div:after {
+    background: var(--main-color);
+}
+
+label input:checked + div > .off {
+    color: transparent !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+}
+
+label input:checked + div > .on {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+label:hover {
+    cursor: pointer;
+}
+
+label:focus, label:active {
+    outline: 0;
+}
+
+.on, .off {
+    text-transform: uppercase;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    font-weight: 600;
+    z-index: 2;
+    letter-spacing: 1px;
+    transition: 0.25s;
+}
+
+.on {
+    color: transparent;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+    letter-spacing: -0.4px;
+}
+
+.off {
+    letter-spacing: -0.5px;
+    left: initial;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.detail-insur {
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.detail-insur .button {
+    color: var(--sub-color);
+    font-size: 16px;
+    margin-right: 315px;
+}
+
+.plans-choice-wrap {
+    position: relative;
+}
+
+.plans-choice-wrap input {
+    display: none;
+}
+
+.plans-choice-wrap label {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1.5px solid var(--gray-txt4-color);
+}
+
+
+.plans-choice-wrap input:checked + label {
+    border: 1.5px solid var(--main-color);
+    box-shadow: rgba(61, 106, 255, 0.2) 0px 2px 12px;
+}
+
+/*.plans-choice-wrap input:checked + label h4, .plans-choice-wrap input:checked + label .plan-price {*/
+.plans-choice-wrap input:checked + label h4 {
+    color: var(--main-color);
+}
+
+
+/* plan-box */
+.plan-title-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.plan-title-wrap .detail-insur-btn {
+    color: var(--sub-color);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.plan-title-wrap .detail-insur-btn::after {
+    display: inline-block;
+    margin: -1px 4px 2px 6px;
+    vertical-align: middle;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--sub-color);
+    border-width: 1px 1px 0 0;
+    transform: rotate(45deg);
+}
+
+.recommand-btn {
+    position: absolute;
+    background-color: #dde7ff;
+    padding: 0.3rem 1.2rem;
+    border-radius: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.recommand-btn img {
+    width: 25px;
+}
+
+.recommand-btn span {
+    color: var(--main-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+.popup .plan-title {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px #dcdcdc solid
+}
+
+.plan-title .switch {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+.tbl-style3.hide {
+    height: 0;
+    border-color: transparent;
+    margin-top: 0;
+    transition: all .2s ease-in-out
+}
+
+.tbl-style3.show {
+    height: 0;
+    border-color: #dcdcdc;
+    transition: all .2s ease-in-out
+}
+
+.selplan-info {
+    position: relative;
+    display: flex;
+    width: 100%
+}
+
+.selplan-info .info-join {
+    position: relative;
+    width: calc(100% - 642px);
+    padding: 30px 50px 0
+}
+
+.selplan-info .plan-price {
+    position: relative;
+    width: 264px
+}
+
+.selplan-info .plan-price.basic {
+    background: #89bbeb
+}
+
+.selplan-info .plan-price.standard {
+    background: #ef3b24
+}
+
+.selplan-info .plan-price.luxury {
+    background: #a99a6f
+}
+
+.selplan-info .plan-price > span {
+    position: absolute;
+    display: block;
+    color: #fff
+}
+
+.selplan-info .plan-price > .label {
+    top: 10px;
+    left: 20px
+}
+
+.selplan-info .plan-price > .price {
+    bottom: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: 700
+}
+
+.selplan-info button.btn-next {
+    width: 114px;
+    height: 100%;
+    border-radius: 0
+}
+
+.selplan-info button.btn-next:after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 13px);
+    right: 15px;
+    width: 26px;
+    height: 26px;
+    background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) -50px 0 no-repeat
+}
+
+.selplan-info button.btn-next > span {
+    font-size: 20px;
+    padding-right: 24px
+}
+
+.member-ipt {
+    position: relative;
+    margin-top: 30px;
+    counter-increment: mem-counter
+}
+
+.member-ipt > .page-title2:after {
+    content: " " counter(mem-counter)
+}
+
+.error-text {
+    position: relative;
+    display: block;
+    color: #ef3b24;
+    line-height: 20px;
+    padding-left: 25px;
+    margin-top: 6px
+}
+
+.error-text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) 0 -150px no-repeat
+}
+
+.error-text:first-of-type {
+    margin-top: 10px
+}
+
+.agree-wrap {
+    margin-top: 30px
+}
+
+.agree-header {
+    border-bottom: 1px #dcdcdc solid;
+    padding: 15px 0 22px
+}
+
+.agree-header label {
+    font-size: 20px;
+    line-height: 21px
+}
+
+.agree-cont .chk-box {
+    margin-top: 16px
+}
+
+.agree-cont .chk-box:first-child {
+    margin-top: 20px
+}
+
+.agree-cont .chk-box label {
+    font-weight: 400
+}
+
+.agree-wrap .sub-text {
+    margin-top: 20px
+}
+
+.agree-wrap .btn-detail {
+    display: inline-block;
+    height: 24px;
+    border-radius: 12px;
+    border: 1px #dcdcdc solid;
+    background: #fff;
+    padding: 0 10px;
+    margin-left: 6px
+}
+
+.agree-wrap .btn-detail > span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    line-height: 24px
+}
+
+.tab-board.agreement .tab-list {
+    border-bottom: 1px #dcdcdc solid;
+    padding-bottom: 11px
+}
+
+.tab-board.agreement .tab-list button {
+    flex: none;
+    width: 148px;
+    height: 36px;
+    border: 0;
+    border-radius: 18px;
+    background: #eee;
+    margin-left: 20px
+}
+
+.tab-board.agreement .tab-list button:first-child {
+    margin-left: 0
+}
+
+.tab-board.agreement .tab-list button > span {
+    font-size: 16px;
+    font-weight: 500
+}
+
+.tab-board.agreement .tab-list button.selected {
+    background: #222
+}
+
+.tab-board.agreement .tab-panel {
+    width: calc(100% + 50px)
+}
+
+.tab-board.agreement .tab-panel.active {
+    height: 592px
+}
+
+.tab-board.agreement .tab-panel > .ui-scroll > .ui-scroll-bar {
+    top: 0;
+    height: 100%
+}
+
+.tab-board.agreement .tab-contents {
+    width: calc(100% - 50px)
+}
+
+.tab-board.agreement .page-title2 {
+    line-height: 24px;
+    margin-top: 30px
+}
+
+.tab-board.agreement .page-title2 label {
+    font-size: 18px;
+    line-height: 24px
+}
+
+.tab-board.agreement .page-title3 .btn-detail {
+    position: absolute;
+    top: calc(50% - 12px);
+    right: 0;
+    display: block;
+    height: 24px;
+    border-radius: 12px;
+    border: 1px #dcdcdc solid;
+    background: #fff;
+    padding: 0 10px;
+    margin-left: 6px
+}
+
+.tab-board.agreement .page-title3 .btn-detail > span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    line-height: 24px
+}
+
+.content-box {
+    position: relative;
+    border: 1px #dcdcdc solid;
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow: hidden
+}
+
+.content-box .ui-scroll {
+    height: 170px;
+    border-bottom: 1px #dcdcdc solid
+}
+
+.content-box .ui-scroll > .ui-scroll-bar {
+    top: 5px;
+    height: calc(100% - 10px)
+}
+
+.content-box .terms-cont {
+    padding: 24px;
+    background: #f8f8f8
+}
+
+.content-box .list-agree {
+    position: relative;
+    padding: 22px 24px 25px
+}
+
+.content-box .list-agree > li {
+    position: relative;
+    margin-top: 20px
+}
+
+.content-box .list-agree > li:first-child {
+    margin-top: 0
+}
+
+.content-box .list-agree .agree-label {
+    font-size: 16px;
+    line-height: 24px
+}
+
+.content-box .list-agree .rdo-group {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 0
+}
+
+.content-box .list-agree .rdo-group .rdo-box label {
+    font-weight: 400
+}
+
+.terms-cont .page-title:not(:first-child) {
+    margin-top: 40px
+}
+
+.terms-cont .page-title + * {
+    margin-top: 20px
+}
+
+.terms-cont .page-title3:not(:first-child) {
+    margin-top: 20px
+}
+
+.terms-cont .page-title3 + * {
+    margin-top: 15px
+}
+
+.terms-cont .list-dash > li {
+    color: inherit
+}
+
+.terms-cont ul + .page-text {
+    margin-top: 10px
+}
+
+.terms-cont .tbl-style3 thead th {
+    text-align: center
+}
+
+.terms-cont .tbl-style3 tbody tr > td {
+    padding: 10px 20px;
+    border-bottom: 1px #f2f2f2 solid
+}
+
+.terms-cont .tbl-style3 tbody tr:last-child > td {
+    border-bottom: 0
+}
+
+.identification .agree-header {
+    padding-top: 0
+}
+
+.identification {
+    position: relative
+}
+
+.identification .tab-panel {
+    height: 580px
+}
+
+.identification .tab-panel > .agree-wrap {
+    margin-top: 0;
+    padding-top: 30px
+}
+
+.identification .pop-bottom-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 56px;
+    border-radius: 10px;
+    background: #222
+}
+
+.identification .pop-bottom-btn > span {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700
+}
+
+.identification .pop-bottom-btn:disabled {
+    background: #dcdcdc
+}
+
+.conf-phone {
+    position: relative;
+    border-bottom: 1px #dcdcdc solid;
+    background: #f8f8f8;
+    padding: 20px
+}
+
+.conf-phone > .frm-item {
+    width: calc(50% - 10px)
+}
+
+.conf-no {
+    width: 100% !important;
+    margin-top: 30px
+}
+
+.conf-no .inp-text {
+    padding-right: 245px
+}
+
+.conf-no .time-retry {
+    position: absolute;
+    display: none;
+    top: calc(50% - 18px);
+    right: 20px
+}
+
+.conf-no .time-retry .time {
+    display: inline-block;
+    font-size: 18px;
+    color: #ef3b24;
+    margin-right: 20px
+}
+
+.conf-no .time-retry .btn-retry {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 18px;
+    background: #f0f1f5
+}
+
+.conf-no .time-retry .btn-retry > span {
+    font-size: 16px;
+    font-weight: 700
+}
+
+.conf-no + .error-text {
+    display: none
+}
+
+.conf-no.send .time-retry, .conf-no.error .time-retry {
+    display: block
+}
+
+.conf-no.error .time-retry .time {
+    display: none
+}
+
+.conf-no.error + .error-text {
+    display: block
+}
+
+#kakaoAgree.hidden {
+    display: none
+}
+
+.kakaopay-info {
+    margin-top: 30px
+}
+
+.kakaopay-info.hidden {
+    display: none
+}
+
+.kakao_step {
+    position: relative;
+    border-top: 1px #dcdcdc solid;
+    border-bottom: 1px #dcdcdc solid;
+    padding: 30px 0;
+    margin-top: 22px
+}
+
+.kakao_step ul {
+    position: relative;
+    display: flex;
+    justify-content: space-between
+}
+
+.kakao_step li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 222px;
+    height: 190px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    text-align: center;
+    line-height: 19px;
+    border: 1px #dcdcdc solid;
+    border-radius: 30px
+}
+
+.kakao_step li:not(:first-child):before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    left: -42px;
+    width: 32px;
+    height: 4px;
+    background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) 0 -200px no-repeat
+}
+
+.kakao_step li > .num {
+    position: relative;
+    display: block;
+    width: 64px;
+    height: 64px;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: -.04em;
+    line-height: 64px;
+    border-radius: 50%;
+    background: #f8f8f8;
+    margin: 0 auto 16px
+}
+
+.kakao_step + .sub_txt {
+    font-size: 14px;
+    color: #888;
+    letter-spacing: -.04em;
+    margin-top: 10px
+}
+
+.kakao_step + .sub_txt .fc_red {
+    color: #ef3b24
+}
+
+.identify-member .frm-item {
+    width: 100%
+}
+
+.identify-member .frm-item .inp-text {
+    width: calc(100% - 225px)
+}
+
+.identify-member span[class*=badge] {
+    position: absolute;
+    display: block;
+    top: calc(50% - 20px);
+    right: 14px;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 20px
+}
+
+.identify-member span.badge-ready {
+    color: #fff;
+    background: #222
+}
+
+.identify-member span.badge-comp {
+    display: none;
+    color: #585862;
+    background: #f0f1f5
+}
+
+.identify-member + .identify-member {
+    margin-top: 40px
+}
+
+.identify-member.addMember {
+    counter-increment: confmem-counter
+}
+
+.identify-member.addMember .frm-item .frm-label:after {
+    content: " " counter(confmem-counter)
+}
+
+.identify-member.complete:not(:first-of-type) {
+    margin-top: 20px
+}
+
+.identify-member.complete span.badge-ready {
+    display: none
+}
+
+.identify-member.complete span.badge-comp, .identify-member.myself span.badge-comp {
+    display: block
+}
+
+.identify-member.complete .check-member {
+    display: none
+}
+
+.payment .rdo-group {
+    margin-top: 30px
+}
+
+.payment .rdo-box label {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px
+}
+
+.payment .rdo-box label:before {
+    top: calc(50% - 13px);
+    width: 26px;
+    height: 26px;
+    background-position: -250px -100px
+}
+
+.payment .rdo-box input[type=radio]:checked + label:before {
+    background-position: -300px -100px
+}
+
+.payment .frm-wrap.conf-phone {
+    border-top: 1px #dcdcdc solid;
+    margin-top: 15px
+}
+
+.payment .hide {
+    display: none
+}
+
+.simple-pay {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px
+}
+
+.simple-pay button {
+    position: relative;
+    width: 244px;
+    height: 190px;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dcdcdc
+}
+
+.simple-pay button > span {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    padding-top: 70px
+}
+
+.simple-pay button > span:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 50px;
+    background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) no-repeat
+}
+
+.simple-pay button.naver > span:before {
+    background-position: 0 -250px
+}
+
+.simple-pay button.kakao > span:before {
+    background-position: -50px -250px
+}
+
+.simple-pay button.toss > span:before {
+    background-position: -100px -250px
+}
+
+.simple-pay button.naver:hover, .simple-pay button.naver.sel {
+    border-color: #02c44f
+}
+
+.simple-pay button.kakao:hover, .simple-pay button.kakao.sel {
+    border-color: #f1c62b
+}
+
+.simple-pay button.toss:hover, .simple-pay button.toss.sel {
+    border-color: #3b86f7
+}
+
+.calc_ing {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 670px;
+    text-align: center
+}
+
+.calc_ing .calc_main {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px
+}
+
+.calc_ing .calc_sub {
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 15px
+}
+
+.spinner {
+    margin-bottom: 40px
+}
+
+.spinner svg:not(:root) {
+    overflow: hidden
+}
+
+.spinner .q-spinner {
+    vertical-align: middle
+}
+
+.spinner .q-spinner-mat {
+    animation: q-spin 2s linear infinite;
+    transform-origin: center center
+}
+
+.spinner .q-spinner-mat .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    color: #ef3b24;
+    animation: q-mat-dash 1.5s ease-in-out infinite
+}
+
+@keyframes q-spin {
+    0% {
+        transform: rotate3d(0, 0, 1, 0)
+    }
+
+    25% {
+        transform: rotate3d(0, 0, 1, 90deg)
+    }
+
+    50% {
+        transform: rotate3d(0, 0, 1, 180deg)
+    }
+
+    75% {
+        transform: rotate3d(0, 0, 1, 270deg)
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 359deg)
+    }
+}
+
+@keyframes q-mat-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px
+    }
+
+    to {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px
+    }
+}
+
+a.link {
+    text-decoration: underline
+}
+
+a.link:hover {
+    color: #ef3b24
+}
+
+.noti {
+    margin: 20px 0;
+}
+
+.noti p {
+    position: relative;
+    font-size: 14px;
+    color: var(--gray-txt1-color);
+    padding-left: 10px;
+}
+
+.noti p::before {
+    position: absolute;
+    content: '';
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 20px;
+    top: 7px;
+    left: 0;
+    background-color: var(--sub-color);
+}
+
+.noti p b {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/*
+#Header h1.benepia {
+    background-image: url(../../../../images/benepia_logo.png);
+    background-position: center 2px
+}
+*/
+
+.payment .frm-wrap.conf-phone .point {
+    width: calc(100% - 145px);
+    font-size: 18px;
+    font-weight: 500
+}
+
+.payment .frm-wrap.conf-phone .point.disabled {
+    color: #dcdcdc
+}
+
+.payment .frm-wrap.conf-phone .use-btn {
+    position: relative;
+    width: 60px;
+    height: 36px;
+    border-radius: 20px;
+    background: #222;
+    padding: 0 16px
+}
+
+.payment .frm-wrap.conf-phone .use-btn > span {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    word-break: keep-all
+}
+
+.payment .frm-wrap.conf-phone .use-btn:disabled {
+    background: #eee;
+    cursor: default
+}
+
+.payment .frm-wrap.conf-phone.benepia .frm-item {
+    flex: 1;
+    margin-right: 20px
+}
+
+.payment .frm-wrap.conf-phone.benepia .frm-item:last-child {
+    margin-right: 0
+}
+
+.payment .frm-wrap.conf-phone.benepia .view-point {
+    width: 160px;
+    background: #222;
+    border-radius: 8px
+}
+
+.payment .frm-wrap.conf-phone.benepia .view-point > span {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700
+}
+
+.info-text {
+    color: #585862;
+    line-height: 21px;
+    margin-bottom: 20px
+}
+
+.floating .hide {
+    display: none !important
+}
+
+.plan_tip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 12px
+}
+
+.plan_tip > button > span {
+    color: #ef3b24;
+    margin-left: 6px;
+    margin-right: 3px
+}
+
+.plan_tip:before {
+    margin-right: 6px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='9' fill='white'/%3E%3Cpath d='M12 1.5C6.20156 1.5 1.5 6.20156 1.5 12C1.5 17.7984 6.20156 22.5 12 22.5C17.7984 22.5 22.5 17.7984 22.5 12C22.5 6.20156 17.7984 1.5 12 1.5ZM12 20.7188C7.18594 20.7188 3.28125 16.8141 3.28125 12C3.28125 7.18594 7.18594 3.28125 12 3.28125C16.8141 3.28125 20.7188 7.18594 20.7188 12C20.7188 16.8141 16.8141 20.7188 12 20.7188Z' fill='%23EF3B24'/%3E%3Cpath d='M10.875 16.125C10.875 16.4234 10.9935 16.7095 11.2045 16.9205C11.4155 17.1315 11.7016 17.25 12 17.25C12.2984 17.25 12.5845 17.1315 12.7955 16.9205C13.0065 16.7095 13.125 16.4234 13.125 16.125C13.125 15.8266 13.0065 15.5405 12.7955 15.3295C12.5845 15.1185 12.2984 15 12 15C11.7016 15 11.4155 15.1185 11.2045 15.3295C10.9935 15.5405 10.875 15.8266 10.875 16.125ZM11.4375 13.5H12.5625C12.6656 13.5 12.75 13.4156 12.75 13.3125V6.9375C12.75 6.83437 12.6656 6.75 12.5625 6.75H11.4375C11.3344 6.75 11.25 6.83437 11.25 6.9375V13.3125C11.25 13.4156 11.3344 13.5 11.4375 13.5Z' fill='%23EF3B24'/%3E%3C/svg%3E") no-repeat;
+    width: 24px;
+    height: 24px;
+    content: "";
+    display: inline-block
+}
+
+.tbl-style3 {
+    border: 1px #dcdcdc solid;
+    border-radius: 8px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.tbl-style3 tbody tr:first-child > th, .tbl-style3 tbody tr:first-child > td {
+    padding-top: 25px;
+}
+
+.tbl-style3 tbody tr:last-child > th, .tbl-style3 tbody tr:last-child > td {
+    padding-bottom: 10px;
+}
+
+.tbl-style3 tbody th, .tbl-style3 tbody td {
+    font-weight: 400;
+    text-align: left;
+    padding: 0.5px 20px;
+    border-right: 1px #f2f2f2 solid;
+    font-size: 14px;
+    letter-spacing: -0.4px;
+}
+
+.wide-width {
+    width: 50%;
+}
+
+.popup table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.popup table tr {
+    vertical-align: top;
+}
+
+.popup table tr td {
+    text-align: right;
+}
+
+caption {
+    width: 0;
+    height: 0;
+    font-size: xx-small;
+    line-height: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.tbl-style3 thead th {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    padding: 8px 0;
+    background: #f8f8f8;
+    border-bottom: 1px #dcdcdc solid;
+}
+
+.tbl-style3 thead th:not(:last-child) {
+    border-right: 1px #dcdcdc solid;
+}
+
+.insur-page-title {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.plan-details-modal  .ui-scroll {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tbl-style3 tbody th > span {
+    color: var(--gray-txt2-color);
+    font-size: 11px;
+}
+
+
+/* 디테일 보장내용 나이대 라디오버튼 */
+
+.input_ul {
+    width: 50%;
+}
+
+.input_text {
+    display: flex;
+    align-items: center;
+}
+
+/*
+.travel-purpose {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.purpose-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+}
+*/    
+
+input[type=radio]:checked + label {
+    color: var(--sub-color);
+}
+
+.travel-purpose .purpose-list label {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0;
+    background: none;
+    width: auto;
+    display: flex;
+    gap: 5px;
+}
+
+
+.input_basic .input_text_box .input_text input {
+    flex: none;
+}
+
+.travel-purpose .purpose-list input {
+    height: auto !important;
+    width: auto !important;
+}
+.travel-purpose .purpose-list label .radio {
+    width: 20px;
+    height: 20px;
+}
+.travel-purpose .purpose-list input:checked + label .radio {
+    border-color: var(--sub-color);
+}
+
+.travel-purpose .purpose-list input:checked + label .radio::before {
+    color: var(--sub-color);
+}
+
+.ageCriteriaPlans, .ageCriteriaNoDomestic {
+    display: none;
+}
+
+.all-tr {
+    text-align: center;
+}
+
+.all-tr th {
+    padding-top: 15px !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: var(--sub-color);
+}
+
+.first-tr th {
+    padding-top: 25px !important;
+}
+
+.last-th {
+    margin-bottom: 12px;
+}
+
+@media ( max-width: 1200px) {
+    .plans-choice-wrap label {
+        width: 100%;
+    }
+
+    .recommand-btn span {
+        color: var(--main-color);
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .selplan-info .plan-price > .price {
+        font-size: 24px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box {
+        padding: 25px 20px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-name {
+        font-size: 20px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-info > div span {
+        font-size: 16px;
+    }
+
+    .plan-title-wrap .detail-insur-btn {
+        font-size: 13px;
+    }
+
+    .plan-top {
+        width: 100%;
+    }
+
+    .plan-top p {
+        font-size: 14px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-info {
+        align-items: flex-end;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-title small {
+        color: var(--sub-color);
+        font-size: 12px;
+        font-weight: 400;
+        margin-left: 5px;
+    }
+    
+
+}
+
+@media (max-width: 432px) {
+
+    /* 플랜 자세히보기 팝업 */
+    .travel-purpose {
+        gap: 10px;
+    }
+
+    .travel-purpose .purpose-list label {
+        font-size: 14px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price-dis-wrap {
+        flex-direction: column;
+    }
+
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price .price-sub {
+        font-size: 14px;
+    }
+
+    .plans-choice-wrap .plans-choice-inner .plan-choice-box .plan-price-box .plan-price .price-tot-num {
+        font-size: 20px;
+    }
+
+
+    .tbl-style3 tbody th > span {
+        font-size: 10px;
+    }
+}
+

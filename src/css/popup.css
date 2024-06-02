@@ -1,0 +1,806 @@
+.popup-wrap {
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit ;
+    z-index: 3;
+}
+.popup-bg {
+    /*background: rgba(34, 34, 34, .5);*/
+    animation: popdim .3s ease-in-out;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+}
+/*.purpose-modal, .country-modal, .obligations-modal, .countryInfo-modal, .detail-insur-modal, .companion-excel-modal {*/
+/*    display: none;*/
+/*}*/
+
+div[class$="-modal"] {
+    display: none;
+}
+
+div.popup-wrap.open {
+    display: block;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 24px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 20px #0003;
+    transform: translate(-50%, -50%);
+    animation: popregular .2s ease-out;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.popup:not(.type-full):not(.type-slide) .ui-scroll-bar {
+    top: 0;
+    height: 100%
+}
+
+.pop-header {
+    display: flex;
+    padding: 0 0 0 50px;
+    align-items: center;
+}
+
+.pop-header .pop-title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px
+}
+
+.pop-header .btn-close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) -250px 0 no-repeat;
+}
+
+.pop-header .btn-close > span {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    font-size: xx-small;
+    text-indent: -9999px;
+    overflow: hidden;
+    opacity: 0
+}
+
+.pop-body {
+    position: relative;
+    overflow: hidden
+}
+
+.pop-body.type-btn {
+    padding-bottom: 136px
+}
+
+.pop-contents {
+    position: relative;
+    padding: 0 40px 40px
+}
+
+.pop-footer {
+    position: relative;
+    display: flex;
+    padding: 0 40px 40px;
+    background: #fff
+}
+
+.pop-footer:before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%)
+}
+
+.pop-footer button[class*=btn-] {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    background: var(--main-color)
+}
+
+.pop-footer.up-btn {
+    bottom: 120px
+}
+
+.pop-footer button[class*=btn-] > span {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.pop-footer button[class*=btn-]:disabled {
+    background: #dcdcdc
+}
+
+.popup.type-small {
+    width: 380px;
+    height: 580px
+}
+
+.popup.type-small .pop-header {
+    padding: 46px 40px 30px
+}
+
+.popup.type-small .pop-header .btn-close {
+    top: 40px;
+    right: 40px
+}
+
+.popup.type-small .pop-body {
+    height: calc(100% - 106px);
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.popup.type-small .pop-contents {
+    padding: 0 20px
+}
+
+.popup.type-middle {
+    width: 480px;
+    max-height: 580px
+}
+
+.popup.type-middle .pop-header {
+    padding: 40px 40px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.popup.type-middle .pop-header .btn-close {
+    top: 36px;
+    right: 40px
+}
+
+.popup.type-middle .pop-contents {
+    padding-bottom: 40px
+}
+
+.popup.type-middle .pop-body.tit-line2 {
+    height: calc(100% - 100px)
+}
+
+.popup.type-middle .frm-item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 75px
+}
+
+.popup.type-middle .frm-item .frm-label {
+    width: auto
+}
+
+.popup.type-middle .frm-item .inp-text {
+    width: 100%;
+    margin-top: 8px
+}
+
+.popup.type-full {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    animation: popfull .3s ease-in
+}
+
+.popup.type-full .pop-header {
+    display: flex;
+    height: 80px;
+    padding: 0 0 0 50px;
+    background: #ebecf6;
+    align-items: center
+}
+
+.popup.type-full .pop-header .btn-close {
+    right: 50px;
+    top: 22px
+}
+
+.popup.type-full .pop-body {
+    height: calc(100% - 180px)
+}
+
+.popup.type-full .pop-contents {
+    padding: 30px 110px 60px
+}
+
+.popup.type-full .pop-footer {
+    height: 100px;
+    padding: 0
+}
+
+.popup.type-full .pop-footer:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, .1) 100%)
+}
+
+.popup.type-slide {
+    top: 0;
+    left: 328px;
+    width: 872px;
+    height: 100%;
+    border-radius: 0;
+    transform: none;
+    animation: popslide .5s ease-in-out
+}
+
+.popup.type-slide .pop-header {
+    display: flex;
+    height: 80px;
+    padding: 0 0 0 50px;
+    background: #ebecf6;
+    align-items: center
+}
+
+.popup.type-slide .pop-header .btn-close {
+    right: 50px;
+    top: 22px
+}
+
+.popup.type-slide .pop-body {
+    height: calc(100% - 80px)
+}
+
+.popup.type-slide .pop-contents {
+    padding: 30px 50px 45px
+}
+
+.popup.type-alert {
+    width: 360px
+}
+
+.popup.type-alert .pop-contents {
+    position: relative;
+    font-size: 16px;
+    /* line-height: 24px; */
+    text-align: center;
+    padding: 40px 20px
+}
+
+.popup.type-alert .pop-footer {
+    padding: 0 24px 24px
+}
+
+.popup.type-alert .pop-footer button {
+    height: 46px
+}
+
+.popup.type-alert .pop-footer button > span {
+    font-size: 16px
+}
+
+.popup.type-datepicker {
+    width: 480px
+}
+
+.popup.type-datepicker .pop-header {
+    padding: 46px 40px 30px
+}
+
+.popup.type-datepicker .pop-header .btn-close {
+    top: 40px;
+    right: 40px
+}
+
+.popup.type-datepicker .pop-body {
+    padding-bottom: 40px
+}
+
+.popup.type-datepicker .pop-contents {
+    padding: 0 20px
+}
+
+.pop-wrap .q-date .q-date__view {
+    height: auto;
+    padding-top: 0
+}
+
+.pop-wrap .q-date .q-date__navigation {
+    height: auto
+}
+
+.pop-wrap .q-date .q-date__navigation .q-date__arrow .q-icon {
+    width: 32px;
+    height: 32px;
+    font-size: xx-small;
+    text-indent: -9999px;
+    /*background: url(../images/ico_common.png) 0 -50px/250px auto no-repeat*/
+}
+
+.pop-wrap .q-date .q-date__navigation .q-date__arrow:first-of-type .q-icon, .pop-wrap .q-date .q-date__navigation .q-date__arrow:nth-of-type(4) .q-icon {
+    background-position: 0 -50px
+}
+
+.pop-wrap .q-date .q-date__navigation .q-date__arrow:nth-of-type(3) .q-icon, .pop-wrap .q-date .q-date__navigation .q-date__arrow:nth-of-type(6) .q-icon {
+    background-position: -50px -50px
+}
+
+.pop-wrap .q-date .q-date__navigation .relative-position .q-btn__content {
+    font-size: 20px;
+    font-weight: 700
+}
+
+.pop-wrap .q-date .q-date__calendar-weekdays {
+    height: auto;
+    margin-top: 20px
+}
+
+.pop-wrap .q-date .q-date__calendar-weekdays .q-date__calendar-item {
+    font-size: 16px;
+    color: var(--main-color);
+    opacity: 1
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container, .pop-wrap .q-date .q-date__calendar-days-container .q-date__calendar-item {
+    margin-top: 5px
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-date__calendar-item.text-primary {
+    color: var(--main-color) !important
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-date__calendar-item .bg-primary {
+    background-color: var(--main-color) !important
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-date__range:before, .pop-wrap .q-date .q-date__calendar-days-container .q-date__range-from:before, .pop-wrap .q-date .q-date__calendar-days-container .q-date__range-to:before {
+    opacity: .2
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-btn {
+    font-size: 16px;
+    color: var(--main-color)
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-date__calendar-item--fill {
+    font-size: 16px;
+    color: #ccc;
+    visibility: visible
+}
+
+.pop-wrap .q-date .q-date__calendar-item > div {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    line-height: 38px
+}
+
+.pop-wrap .q-date .q-date__calendar-item[class*=q-date__range] .q-btn__content > span {
+    color: #fff !important
+}
+
+.pop-wrap .q-date {
+    width: 100% !important;
+    height: auto !important
+}
+
+.pop-wrap .q-date .q-date__calendar-days-container .q-date__calendar-item--fill {
+    font-size: 16px;
+    color: #ccc;
+    visibility: visible;
+    opacity: .18
+}
+
+.pop-wrap .q-date .q-date__calendar-item > div {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+    line-height: 42px
+}
+
+.q-field__control:before, .q-field__control:after {
+    display: none
+}
+
+@keyframes popdim {
+    0% {
+        background: rgba(34, 34, 34, 0)
+    }
+    to {
+        background: rgba(34, 34, 34, .5)
+    }
+}
+
+@keyframes popregular {
+    0% {
+        top: 52%
+    }
+    to {
+        top: 50%
+    }
+}
+
+@keyframes popfull {
+    0% {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes popslide {
+    0% {
+        left: 100%
+    }
+    to {
+        left: 328px
+    }
+}
+
+
+
+
+h1[class*=page-title], h2[class*=page-title], h3[class*=page-title], h4[class*=page-title] {
+    position: relative;
+    font-weight: 500;
+}
+h1[class*=page-title]:first-child, h2[class*=page-title]:first-child, h3[class*=page-title]:first-child, h4[class*=page-title]:first-child {
+    margin-top: 0;
+}
+.page-title2 {
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+}
+ul, dl, li, dt, dd {
+    position: relative;
+    display: block;
+    list-style: none;
+}
+.list-dot>li:first-child {
+    margin-top: 0;
+}
+.list-dot>li:before, p.list-dot:before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #585862;
+}
+.list-dot>li, p.list-dot {
+    position: relative;
+    color: #585862;
+    line-height: 21px;
+    padding-left: 14px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+.ui-scroll{
+    position:relative;
+    height: 100%;
+    overflow:hidden;
+}
+
+.ui-scroll-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.teddyx-color {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: 500;
+    color: var(--main-color);
+}
+.select-list .select_item label {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 6px 0 6px 5px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+.select-list .select_item label:hover {
+    background-color: #EDF2FF;
+}
+.select-list .select_item input[type=radio]:checked + label {
+    border: 0;
+    background-color: #EDF2FF;
+    color: var(--main-color);
+    border-radius: 5px;
+}
+
+
+.q-scrollarea_content .contents-box p {
+    line-height:21px;
+    margin-top: 5px;
+}
+
+.q-scrollarea_content .contents-box {
+    margin-top: 10px;
+}
+
+.q-scrollarea_content .contents-box b {
+    font-weight: 500;
+}
+
+.q-scrollarea_content .num {
+    display: flex;
+    align-items: baseline;
+    gap: 0 5px;
+}
+
+.q-scrollarea_content p {
+    font-size: 15px;
+}
+
+.q-scrollarea_content span {
+    font-size: 15px;
+}
+
+.q-scrollarea_content table {
+    width: 100%;
+    margin: 0.938em 0;
+    table-layout: fixed;
+}
+
+.q-scrollarea_content table tr:last-child td {
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.q-scrollarea_content table tr td {
+    box-sizing: border-box;
+    font-size: 0.813rem;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    padding: 0.313em;
+}
+
+.q-scrollarea_content table tr td a {
+    word-break: break-all;
+}
+
+.q-scrollarea_content table tr td:last-child {
+    border-right: 0;
+}
+
+.q-scrollarea_content table tr td a {
+    color: #0096AF;
+    font-size: 0.813rem;
+}
+
+.accordion-list:last-child li:after {
+    content: "PDF";
+    position: relative;
+    right: 0.2rem;
+    width: 32px;
+    height: 16px;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 16px;
+    border: 0 none;
+    border-radius: 2px;
+    background: #999999;
+}
+
+
+.scroll {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+}
+.relative-position {
+    position: relative;
+}
+.fit {
+    width: 100% !important;
+    height: 100% !important;
+}
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+
+/* middle popup */
+.type-middle .list-wrap li {
+    position: relative;
+    padding-left: 10px;
+}
+
+.type-middle .list-wrap li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: var(--sub-color);
+}
+
+.duplicateSubscription-modal .duplicateSubscription ul li {
+    position: relative;
+    padding-left: 10px;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.duplicateSubscription-modal .duplicateSubscription ul li::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: var(--sub-color);
+}
+
+.plans-price {
+    display: flex;
+}
+
+/* span.small {
+    font-size: 12px;
+    color: var(--gray-txt2-color);
+} */
+
+.plan-details-modal .popup.type-middle {
+    width: 700px;
+    height: 100%;
+    max-height: 55vh;
+}
+
+@media (max-width: 1200px) {
+
+    .popup-bg {
+        border-radius: 0;
+    }
+
+    .pop-footer button[class*=btn-] > span {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 432px) {
+
+    .popup.type-full .pop-contents {
+        padding: 25px;
+    }
+
+    /* .tbl-style3 thead th {
+        font-size: 15px;
+    } */
+
+    .tbl-style3 tbody th, .tbl-style3 tbody td {
+        padding: 2px 20px;
+        font-size: 14px !important;
+    }
+
+    .popup.type-middle {
+        width: 85%;
+        max-height: 580px;
+    }
+
+    .plan-details-modal .popup.type-middle {
+        width: 85%;
+        max-height: 60vh;
+        overflow-y: auto;
+
+    }
+
+
+
+    .popup.type-slide {
+        top: 0;
+        left: 50%;
+        width: 432px;
+        height: 100%;
+        transform: translateX(-50%);
+        right: 0;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .tbl-style3 tbody th, .tbl-style3 tbody td {
+        padding: 1px 7px;
+        font-size: 13px !important;
+    }
+
+    /* type-middle */
+
+    .plan-details-modal .popup.type-middle {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .popup.type-middle .pop-header {
+        padding: 20px;
+    }
+
+    .plan-details-modal .popup.type-middle .pop-contents {
+        padding: 0 10px 20px;
+        overflow-x: auto;
+    }
+
+    .plan-details-modal .pop-header {
+        padding: 20px 0 20px 10px !important;
+    }
+
+
+    .pop-header .pop-title {
+        font-size: 20px;
+    }
+
+    .pop-contents {
+        position: relative;
+        padding: 0 20px 20px;
+    }
+
+    .popup.type-middle .pop-header .btn-close {
+        top: 18px;
+        right: 20px;
+    }
+
+    .pop-header .btn-close {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: url(https://trvins.meritzfire.com/trvins/assets/icons.4cf71900.png) -253px -3px no-repeat;
+    }
+
+    .insur-page-title {
+        font-size: 18px;
+    }
+
+    .popup.type-slide {
+        top: 0;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-50%);
+        right: 0;
+    }
+
+    .select-list .select_item label {
+        /* font-size: 16px; */
+        padding: 5px 7px;
+    }
+
+    .tbl-style3 thead th {
+        font-size: 14px;
+    }
+
+}

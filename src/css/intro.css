@@ -1,0 +1,629 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+.btn-start {
+    display: none;
+}
+.capsule {
+    width: 100%;
+    height: 70px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: #EDF2FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+}
+
+.capsule input {
+    display: none;
+}
+
+.capsule ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.capsule ul li {
+    width: calc(100%/3);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-right: 2px solid rgb(255, 255, 255);
+    padding: 5px;
+}
+
+.capsule ul li:last-child {
+    border-right: 0;
+}
+
+.capsule label::after, .capsule span::after {
+    position: absolute;
+    content: '';
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 61px;
+    transform: translateY(-50%);
+}
+
+.list-abroad label::after, .list-abroad span::after {
+    background-image: url('../images/travel/jinsol/airport.png');
+}
+
+.list-longTerm label::after, .list-longTerm span::after {
+    background-image: url('../images/travel/jinsol/carrier.png');
+}
+
+.list-domestic label::after, .list-domestic span::after {
+    background-image: url('../images/travel/jinsol/car.png');
+}
+
+.capsule ul li span {
+    padding-left: 30px;
+}
+
+.capsule ul input:checked  + label, .capsule ul li.current span {
+    width: 204px;
+    height: 40px;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background-color: #EDF2FF;
+}
+
+.capsule ul li.list {
+    cursor: pointer;
+    user-select: none;
+}
+
+.capsule ul input:checked + label::after {
+    filter: invert(16%) sepia(99%) saturate(5538%) hue-rotate(227deg) brightness(100%) contrast(107%);
+}
+
+.capsule ul .list.current span::after {
+    filter: invert(16%) sepia(99%) saturate(5538%) hue-rotate(227deg) brightness(100%) contrast(107%);
+}
+
+.intro-main {
+    margin-top: 3.125rem;
+    width: 100%;
+    /*background-image: url('../images/travel/long-term/meritz/mo/city.png');*/
+    background-repeat: no-repeat;
+    background-position: right bottom 24px;
+    margin: 0 auto -35px;
+    padding-top: 70px;
+}
+
+.accordion-list {
+    background: rgba(191, 191, 191, 0.1);
+    border-bottom: 0.063rem solid rgba(112, 112, 112, 0.2);
+}
+
+.accordion-list li:first-child {
+    padding: 1rem;
+}
+
+.accordion-list li {
+    display: flex;
+    background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-list li p,
+.accordion-list li a {
+    color: #505050;
+}
+
+.accordion-list li.open p {
+    font-weight: 600;
+}
+
+.accordion-list li span {
+    transition: all 0.35s ease;
+    font-weight: 500;
+}
+
+.accordion-list li.open span {
+    transform: rotateZ(180deg);
+}
+
+.accordion-contents {
+    padding: 1.25rem 1.875rem 3.125rem;
+    width: 100%;
+    border: 1px solid #F0F0F0;
+    display: contents;
+}
+
+.accordion-contents .num {
+    display: flex;
+    align-items: baseline;
+    gap: 0 5px;
+}
+
+.accordion-contents p {
+    font-size: 0.813rem !important;
+    margin: 0.313em 0;
+}
+
+.accordion-contents span {
+    font-size: 0.813rem;
+}
+
+.accordion-contents table {
+    width: 100%;
+    margin: 0.938em 0;
+    table-layout: fixed;
+}
+
+.accordion-contents table tr:last-child td {
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.accordion-contents table tr td {
+    box-sizing: border-box;
+    font-size: 0.813rem;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    padding: 0.313em;
+}
+
+.accordion-contents table tr td a {
+    word-break: break-all;
+}
+
+.accordion-contents table tr td:last-child {
+    border-right: 0;
+}
+
+.accordion-contents table tr td a {
+    color: #0096AF;
+    font-size: 0.813rem;
+}
+
+.accordion-list:last-child li:after {
+    content: "PDF";
+    position: relative;
+    right: 0.2rem;
+    width: 32px;
+    height: 16px;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 16px;
+    border: 0 none;
+    border-radius: 2px;
+    background: #999999;
+}
+
+.pc {
+    display: block;
+}
+
+.call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 0 15px;
+}
+
+.call p {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.call p span {
+    font-weight: 400;
+}
+
+.mo {
+    display: none;
+}
+
+.intro-form-list .input-div.select-input {
+    width: 50%;
+}
+
+.intro-form-list .input-div.select-input .calendar, .intro-form-list .input-div .calendar {
+    padding-right: 16px;
+}
+
+.intro-form-list .time-select {
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    font-size: 16px;
+    height: 100%;
+    transition: 0s;
+}
+
+.intro-form-list .arrive,
+.intro-form-list .depart {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 16px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    height: 50px
+}
+
+.intro-form-list .gender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    height: 56px
+}
+
+.intro-form .travel-purpose .selector {
+    position: relative;
+    width: 100%;
+    display: block;
+    padding: 13px 15px;
+    color: #999;
+    font-size: 16px;
+    font-weight: 300;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.intro-form .travel-purpose .selector li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+
+.intro-form .input-div .placeholder {
+    font-size: 18px;
+    padding-left: 16px;
+}
+
+.modal-inner .select-list .select_item input[type=radio]:checked + label {
+    border: 0;
+    background-color: #EDF2FF;
+    color: var(--main-color);
+}
+
+.intro-form .input-div .placeholder.slct {
+    font-weight: 300;
+    color: var(--gray-txt2-color);;
+}
+
+.intro-form .input-div.country-modal-btn,
+.intro-form .input-div.purpose-modal-btn,
+.intro-form .input-div.prev-insurance-companies-modal-btn {
+    border: 0;
+    background: #f5f5f5;
+    border-radius: 10px;
+    font-size: 18px;
+    background: #f5f5f5 url(../images/travel/domestic/meritz/mo/arrow.svg) no-repeat calc(100% - 18px) center;
+    background-size: 15px;
+    cursor: pointer;
+}
+
+.country_cont h5 {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.country_cont h5::after {
+    content: '';
+    position: absolute;
+    top: 49%;
+    right: -25px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-image: url(../images/travel/overseas/hanainsure/mo/Icon_ques_mark.svg);
+}
+
+.obligation-wrap {
+    margin-top: 30px;
+}
+
+.inpCheck {
+    position: relative;
+    display: flex;
+    vertical-align: top;
+    justify-content: space-between;
+}
+
+.check-list {
+    display: flex;
+}
+
+.check-list .check-list-box {
+    display: flex;
+    gap: 35px;
+}
+
+.check-list label {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.check-list label::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    flex: none;
+    background: #ccc url(../images/travel/overseas/meritz/mo/ico_common.png) -203px -52px / 250px auto no-repeat;
+    transition: all 0.15s;
+}
+
+.check-list label p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.inpCheck input:checked+label:before, .long-term-extension-cont input:checked+label:before {
+    background-color: var(--sub-color);
+    border: 1px solid var(--sub-color);
+}
+
+.ext_ins_cont {
+    display: none;
+}
+
+.long-term-extension-cont input[type=radio] {
+    display: none;
+}
+
+.longtermCheck label p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.longtermCheck-text {
+    font-size: 18px;
+}
+
+.obligation-list-title span {
+    display: block;
+    font-weight: bold;
+    transition: all 0.35s ease;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    position: relative;
+    right: 21px;
+    cursor: pointer;
+    color: #707070;
+    margin-top: 5px;
+}
+
+.obligation-list li p {
+    font-size: 15px;
+    color: #303030;
+}
+
+.inpCheck-terms {
+    font-size: 15px;
+    padding: 0.938rem 0;
+}
+
+.inpCheck-terms .contents {
+    background-color: #f3f7ff;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.inpCheck-terms .noti .link {
+    text-decoration: underline;
+}
+
+.inpCheck-terms .noti .link:hover {
+    color: var(--main-color);
+}
+
+.radio {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1.5px solid #dcdcdc;
+    flex: none;
+}
+.radio::before {
+    position: absolute;
+    content: '\e876';
+    font-family: 'Material Symbols Outlined';
+    color: #bbb;
+    font-size: 21px;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.expand_more.open {
+    /*transform: scaleY(-1);*/
+    transform: rotate(180deg);
+}
+.expand_more {
+    transition: all 0.35s ease;
+}
+
+.purpose-list {
+    display: none;
+}
+
+.purpose-list.current {
+    display: block;
+}
+
+/* mobile */
+@media (max-width: 1200px) {
+
+    .main {
+        border-radius: 0;
+    }
+
+    /* intro-page */
+    .btn-start {
+        display: block;
+    }
+
+    .capsule {
+        position: fixed;
+        top: 37px;
+        left: 0;
+        background-color: #f5f5f5;
+        padding: 0;
+        height: 60px;
+        padding: 10px 0;
+        border-radius: 0;
+    }
+
+    .capsule ul {
+        width: 432px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        border-radius: 25px;
+        padding: 0 20px;
+    }
+
+    .capsule ul li {
+        border-right: 0;
+        padding: 0px 10px;
+    }
+
+    .capsule ul span {
+        border: 0;
+    }
+
+    .capsule ul li span {
+        padding-left: 0;
+    }
+
+    .list span::after {
+        width: 0;
+    }
+
+    .capsule ul input:checked + label {
+        border-radius: 5px;
+    }
+
+
+    .capsule label::after {
+        left: 13%;
+    }
+
+    .capsule label::after {
+        width: 0;
+    }
+
+    .capsule ul label {
+        padding-left: 0;
+    }
+
+    .right .main-txt h1 {
+        font-size: 24px;
+    }
+
+    .capsule label::after {
+        left: 83px;
+    }
+
+    .intro-form-list ul {
+        gap: 15px;
+    }
+
+    .intro-form-list .col {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .intro-form .input-div .placeholder {
+        font-size: 16px;
+    }
+
+    .longtermCheck-text>div {
+        font-size: 14px;
+    }
+
+    .check-list label p {
+        font-size: 15px;
+    }
+
+    .inpCheck-terms .contents {
+        font-size: 14px;
+    }
+
+    .btn-next-first {
+        display: none;
+    }
+
+}
+
+@media (max-width: 432px) {
+
+    /* intro-page */
+
+    .capsule label::after {
+        left: 83px;
+    }
+
+    .capsule ul {
+        width: 100%;
+    }
+
+
+    .check-list .check-list-box {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .capsule label::after {
+        left: 10%;
+    }
+
+
+}

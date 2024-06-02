@@ -1,0 +1,433 @@
+.birth-input>.input-div {
+    width: 472px !important;
+}
+
+.gender-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0 5px;
+    flex: none;
+    width: 100%;
+    height: 100%;
+}
+
+.gender-picker  ul {
+    gap: 10px;
+}
+
+.gender-picker li {
+    width: 50%;
+    height: 50px;
+}
+
+.gender-picker-list input, .agree-picker-list input {
+    display: none;
+}
+
+.gender-picker-list label {
+    font-size: 16px;
+    color: #555;
+    border: 0.063rem solid #999;
+    border-radius: 0.313rem;
+    display: block;
+    position: relative;
+    transition: all 0.35s;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    line-height: 3.2;
+    user-select: none;
+}
+
+.gender-picker-list input:checked + label {
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    background-color: #EDF2FF;
+}
+
+.add-companion-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.add-companion-btn button.lock {
+    background: #dcdcdc;
+    color: #fff;
+    border-color: #dcdcdc;
+}
+
+.add-companion-btn {
+    margin-top: 35px;
+}
+
+.add-companion-btn h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 9px;
+    text-align: left;
+    width: 100%;
+    letter-spacing: -1px;
+}
+
+.add-companion-btn button {
+    position: relative;
+    width: 100%;
+    height: 52px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--sub-color);
+    color: var(--main-color);
+}
+
+.add-companion-btn button.excel-modal-btn {
+    border: 1px solid #707070;
+    color: #707070;
+}
+
+.add-companion-btn button.excel-btn img {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    margin-left: 235px;
+}
+
+.companion-card {
+    margin-top: 0.938rem;
+}
+
+.companion-card:first-child {
+    margin-top: 0;
+}
+
+.companion-card-inner {
+    background-color: var(--gray-txt5-color);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.companion-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.companion-card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.companion-card-body p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0.813rem 0;
+}
+
+.companion-card-header-left p span {
+    color: var(--main-color);
+}
+.companion-card-header-left p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.companion-card-header-right.delete-btn {
+    cursor: pointer;
+    font-size: 18px;
+    text-align: right;
+}
+
+.companion-card-body ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.625rem;
+    gap: 20px;
+}
+
+.companion-birth {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+.companion-birth input {
+    width: 458px;
+    height: 46px;
+    background: #e9e9e9;
+    font-size: 1rem;
+    padding: 0.625rem 16px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-weight: 400;
+    transition: 0s;
+}
+
+.companion-birth input:focus {
+    caret-color: var(--sub-color);
+    border: 1px solid var(--main-color);
+    background: var(--text-white);
+}
+
+.companion-birth input::placeholder {
+    font-weight: 300;
+    color: #999;
+}
+
+.companion-gender {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+}
+
+.companion-gender input {
+    display: none;
+}
+
+.companion-gender label {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0.625rem 0;
+    color: #555;
+    border: 0.063rem solid #999;
+    border-radius: 0.313rem;
+    display: block;
+    position: relative;
+    transition: all 0.35s;
+    text-align: center;
+    width: 50%;
+    cursor: pointer;
+    background: #fff;
+    user-select: none;
+}
+
+.companion-gender input:checked + label {
+    color: var(--main-color);
+    background-color: #EDF2FF;
+    border: 0.063rem solid var(--main-color);
+}
+
+.upload {
+    width: 100%;
+    font-size: 16px;
+    color: #707070;
+    background-color: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px dashed #707070;
+}
+
+.upload img {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    margin-left: 100px;
+}
+
+.btn button.disabled {
+    width: 100%;
+    text-align: center;
+    background-color: #dcdcdc;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 17px 0;
+    color: #fff;
+}
+
+.duplicateSubscription .link {
+    text-decoration: underline;
+}
+
+.btn button {
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 17px 0;
+    color: #fff;
+    background: #ef3b24;
+}
+
+.upload-area {
+    margin-top: 20px;
+}
+
+.upload-area input {
+    display: none;
+}
+
+.upload-area label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #F0F0F0;
+    border: 1px dashed #707070;
+    border-radius: 5px;
+}
+
+.upload-area .uploadX {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+}
+
+.upload-area label p {
+    font-size: 16px;
+    /* color: #707070; */
+}
+
+.upload-area label img {
+    width: 10px;
+    height: 12px;
+}
+
+.upload-area .uploadO {
+    display: none;
+}
+
+.contents a.excel-download {
+    display: block;
+    font-size: 16px;
+    color: var(--sub-color);
+    border-bottom: 1px solid var(--sub-color);
+    padding-bottom: 5px;
+    margin-top: 5px;
+    width: 90px;
+}
+
+.upload_confirmation {
+    display: block;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 0 15px;
+    margin-top: 10px;
+    max-height: 300px;
+    overflow: overlay;
+    border: 1px solid #d3d3d3;
+    padding: 5px 10px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.upload_confirmation p {
+    font-size: 13px;
+    line-height: 1.5;
+    display: inline-block;
+    float: left;
+    width: 50%;
+    color: #5e5e5e
+}
+
+.upload_confirmation p.error {
+    color: #d0021b;
+}
+
+.add-companion-btn button.excel-btn {
+    border: 1px solid #888;
+    color: #555;
+}
+
+.add-companion-btn button.excel-btn img {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    margin-left: 220px;
+}
+
+.excel-modal-btn {
+    border: 1px solid #707070;
+    color: #707070;
+}
+
+.companion-excel-modal .q-scrollarea_content p {
+    font-size: inherit;
+}
+
+.companion-excel-modal .q-scrollarea_content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    counter-reset: number;
+}
+
+.companion-excel-modal .q-scrollarea_content ul li {
+    display: flex;
+    counter-increment: number;
+}
+
+.companion-excel-modal .q-scrollarea_content ul li::before {
+    display: block;
+    content: counter(number) '.';
+    margin-right: 5px;
+}
+
+@media( max-width: 1200px) {
+    .popup.open  .popup-wrapper {
+        width: 100%;
+        margin: 0 30px;
+    }
+
+    .popup.open  .popup-inner {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .birth-input>.input-div {
+        width: 100% !important;
+    }
+
+    .add-companion-btn h2 {
+        font-size: 18px;
+    }
+
+    .add-companion-btn button.excel-btn {
+        display: none;
+    }
+
+    .companion-birth input {
+        width: 200px;
+    }
+}
+
+@media (max-width: 432px) {
+
+    .companion-card-inner {
+        padding: 15px 10px;
+    }
+    .companion-card-body ul {
+        gap: 10px;
+    }
+
+    .companion-birth input {
+        width: 170px;
+    }
+
+    .companion-gender {
+        gap: 5px;
+    }
+
+    .companion-gender label {
+        font-size: 15px;
+    }
+}
