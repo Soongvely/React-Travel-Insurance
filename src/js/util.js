@@ -8,11 +8,16 @@ comUtil.onlyNum = (e) => {
 }
 
 comUtil.formatDate = (param, format='') => {
-    let date = new Date(param),
-        month = (date.getMonth() + 1) > 9 ? date.getMonth() + 1 : `0${(date.getMonth() + 1)}`,
-        day = date.getDay() > 9 ? date.getDay() : `0${date.getDay()}`;
+    // YYYYMMDD 형식으로 변환
+    const date = param.replace(/[-./]/g, '').replace(/\s/g, '');
+    
+    if (Number(date) && date.length === 8) {
+        return `${date.substr(0, 4)}${format}${date.substr(4, 2)}${format}${date.substr(6)}`;
+    }
+}
 
-    return `${date.getFullYear()}${format}${month}${format}${day}`;
+comUtil.formatTime = (param) => {
+    return param < 13 ? `오전 ${Number(param) ? Number(param) : 12}` : `오후 ${Number(param) - 12}`;
 }
 
 comUtil.getManAge = (birth) => {

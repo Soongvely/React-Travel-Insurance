@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import DatePicker from 'react-datepicker';                     // 달력
+import DatePicker from 'react-datepicker'; // 달력
 import { ko } from 'date-fns/locale';
-import { MoHeader } from '../components/common/Header.jsx';    // 공통헤더
-import { PcSubMain, MoSubMain } from '../components/common/SubMain.jsx';  // 사이드영역
-import Purpose from '../components/modals/Purpose.jsx';        // 여행목적 팝업
-import Country from '../components/modals/Country.jsx';        // 여행국가 팝업
+import { MoHeader } from '../components/common/Header.jsx';              // 공통헤더 컴포넌트
+import { PcSubMain, MoSubMain } from '../components/common/SubMain.jsx'; // 서브메인 컴포넌트
 import { useDispatch, useSelector } from 'react-redux';
 import { setJoinInfo } from "../reducers/setter";
+import useModal  from '../reducers/useModal.ts'; // 모달 커스텀 훅
 
 /**
  * 해외여행
@@ -18,6 +17,8 @@ const Overseas = () => {
     const navigate = useNavigate();
     const dispatch =  useDispatch();
     
+    const { showModal, hideModal } = useModal();
+
     // store state form객체
     const { form } = useSelector(state => state.setter);
     
@@ -26,22 +27,24 @@ const Overseas = () => {
     
     // store state 업데이트
     const setForm = (obj) => dispatch(setJoinInfo(obj)); 
-   
+
     // store state 업데이트 핸들러
     const setFormHandler = (e) => {
-        if (e.currentTarget.dataset.pop) {
+        if (e.currentTarget.dataset.modal) {
             if (e.target.nodeName  !== 'LABEL') return; 
 
             setForm({...form, [e.target.previousSibling.name]: e.target.textContent});
 
-            setIsOpen1(false);
-            setIsOpen2(false);
+            hideModal();
         }
         else {
             setForm({...form, [e.target.name]: e.target.value});
         }
     }
-    
+
+    // 현재 페이지 정보 저장
+    useEffect(() => {setForm({...form, page: 'overseas'})}, []);
+
     // form객체가 변경될 때 마다 체크
     useEffect(() => {
         // 유효성체크 대상 목록 추출
@@ -52,26 +55,40 @@ const Overseas = () => {
         !values.length ? setDisabled(false) : setDisabled(true);
     }, [form]);
 
-    /**
-     * Modal Variable
-     */
-    const [isOpen1, setIsOpen1] = useState(false),
-          [isOpen2, setIsOpen2] = useState(false);
+    // 모달 이벤트 핸들러
+    const modalHandler = {
+        // 여행목적
+        purpose: () => {
+            showModal({
+                modalType: "PurposeModal",
+                modalProps: {
+                    type: "1",
+                    close: hideModal,
+                    callback: setFormHandler,
+                }
+           });
+        },
+        // 여행국가
+        country: () => {
+            showModal({
+                modalType: "CountryModal",
+                modalProps: {
+                    close: hideModal,
+                    callback: setFormHandler,
+                }
+           });
+        },
+        // 여행국가선택안내
+        countryInfo: () => {
+            showModal({
+                modalType: "CountryInfoModal",
+                modalProps: {
+                    close: hideModal,
+                }
+           });
+        }
+    }
 
-    /**
-     * Modal Function
-     */
-    const modal = {
-        // 모달팝업 열기
-        open : (e) => {
-            e.currentTarget.dataset.pop === 'purpose' ? setIsOpen1(true) : setIsOpen2(true);
-        },
-        // 모달팝업 닫기
-        close: (e) => {
-            e.currentTarget.dataset.pop === 'purpose' ? setIsOpen1(false) : setIsOpen2(false);
-        },
-    };
-    
     return (
         <>
             {/* PC 서브메인 */}
@@ -88,10 +105,6 @@ const Overseas = () => {
                                 <h1>여행 일정을 알려주세요</h1>
                             </div>
                             <form className="intro-form">
-                                <input type="hidden" name="insuranceTy" value="overseas"/>
-                                <input type="hidden" name="purposeCd" value=""/>
-                                <input type="hidden" name="nationCd" value=""/>
-                                <input type="hidden" name="oldinsuCd" value=""/>
                                 <div className="capsule pc-capsule">
                                     <ul>
                                     <li className="list list-abroad current" onClick={() => navigate('/travel/overseas')}>
@@ -207,20 +220,14 @@ const Overseas = () => {
                                     <div className="intro-form-list">
                                     <ul className="col">
                                         <li className="purpose_cont">
-                                        {/** 여행목적 선택 팝업 */}
-                                        <Purpose data-pop="purpose" isOpen={isOpen1} close={modal.close} type={"1"} click={setFormHandler}/>
-                                        
                                         <h5>여행목적</h5>
-                                        <div className="input-div js-click-modal purpose-modal-btn" onClick={modal.open} data-pop="purpose">
+                                        <div className="input-div js-click-modal purpose-modal-btn" onClick={modalHandler.purpose} data-modal="purpose">
                                             <div className={`placeholder ${form.purpose ? '' : 'slct'}`}>{form.purpose || '여행목적 선택'}</div>
                                         </div>
                                         </li>
                                         <li className="country_cont">
-                                        {/** 여행국가 선택 팝업 */}
-                                        <Country data-pop="country" isOpen={isOpen2} close={modal.close} click={setFormHandler}/>
-                                        
-                                        <h5 className="js-click-modal countryInfo-modal-btn" data-modal="countryInfo-modal">여행국가</h5>
-                                        <div className="input-div btn js-click-modal country-modal-btn" onClick={modal.open} data-pop="country">
+                                        <h5 className="js-click-modal countryInfo-modal-btn" onClick={modalHandler.countryInfo}>여행국가</h5>
+                                        <div className="input-div btn js-click-modal country-modal-btn" onClick={modalHandler.country}  data-modal="country">
                                             <div className={`placeholder ${form.country ? '' : 'slct'}`}>{form.country || '처음 여행하는 국가'}</div>
                                         </div>
                                         </li>
@@ -230,7 +237,7 @@ const Overseas = () => {
                                     <div className="obligation-wrap">
                                     <div className="obligation-list-title inpCheck confirmCheck">
                                         <div className="check-list">
-                                        <input type="checkbox" id="chkAgreeObligation" name="chkAgreeObligation" value="Y" onChange={e => setForm({...form, 'checkYn':e.currentTarget.checked || ''})}/>
+                                        <input type="checkbox" id="chkAgreeObligation" name="chkAgreeObligation" checked={form.checkYn} onChange={e => setForm({...form, 'checkYn': e.currentTarget.checked || ''})}/>
                                         <label htmlFor="chkAgreeObligation">
                                             <p>여행 제한/금지 지역 확인</p>
                                         </label>
@@ -241,7 +248,7 @@ const Overseas = () => {
                                         <ul>
                                         <li className="contents noti">
                                             외교통상부가 지정하는 지역별 여행경보 단계 중 적색경보(철수권고), 흑색경보 (여행금지)지역을 방문하실 경우 보험가입과 보상이 불가능 하오니 외교통상부의 해외안전 여행 사이트
-                                            <a className="sub-color" href="https://www.0404.go.kr/dev/main.mofa" target="_blank">www.0404.go.kr</a>를
+                                            <a className="sub-color" href="https://www.0404.go.kr/dev/main.mofa" rel="noreferrer" target="_blank">www.0404.go.kr</a>를
                                             방문하시어 여행하려는 국가가 안전한 지역인지 반드시 확인하세요.
                                         </li>
                                         </ul>

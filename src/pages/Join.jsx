@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MoHeader } from '../components/common/Header.jsx';
+import { PcSubMain } from '../components/common/SubMain.jsx';  // 사이드영역
 import { comUtil } from '../js/util.js';
 import { comPop } from '../js/common.js';
 import { JoinJs } from '../js/join.js';
+import { dataList } from '../data.js';
 
 import axios from 'axios';
 import $ from 'jquery';
@@ -23,17 +25,17 @@ const Join = (props) => {
     const { form } = useSelector(state => state.setter);
     
     // store state 업데이트
-    const setForm = (obj) => dispatch(setJoinInfo(obj)); 
+    const setForm = obj => dispatch(setJoinInfo(obj)); 
 
     // form객체 값 변경    
-    const changeForm = (e) => {
+    const changeForm = e => {
         let value = e.target.name === 'gender' ? e.target.value : comUtil.onlyNum(e);
         setForm({...form, [e.target.name]: value});
     }
 
     // 유효성 체크
-    const validation = async (e) => {
-        if ([e.currentTarget.classList].find(e => e.value === 'disabled')) {
+    const validation = async e => {
+        if ([...e.currentTarget.classList].find(cls => cls === 'disabled')) {
             checkBtnDisabled('','show');
             return false;
         } 
@@ -136,18 +138,24 @@ const Join = (props) => {
             "planSqe"   : new Date().getFullYear(),                          // 플랜일련번호(연도)
         };
 
+        let result = dataList;
         // call axios
-        let result = await axios.post("/common/selectInsuList", param)
-                                .catch(err => comPop.msg.warn(`[${err?.response?.status}]\n보험료계산 중 오류가 발생했습니다.`));
-
+        //let result = await axios.post("/common/selectInsuList", param)
+        //                        .catch(err => comPop.msg.warn(`[${err?.response?.status}]\n보험료계산 중 오류가 발생했습니다.`));
+        
         if (result) {
+            setForm({...form, insInfo: result});
+            
+            console.log(result);
             // form 객체에 저장
             navigate('/travel/plan');
         }
     }
 
     return (
-        <div>
+        <>
+            {/* PC 서브메인 */}
+            <PcSubMain/>
             <section className="right">
                 <div className="scrollarea">
                     <div className="scrollarea_container">
@@ -179,11 +187,11 @@ const Join = (props) => {
                                                 <div className="gender-picker">
                                                     <ul>
                                                         <li className="gender-picker-list">
-                                                            <input type="radio" name="rdoInsrdGender" id="rdoInsrdGender_1" value="1" onChange={e => setForm({...form, 'gender': e.target.value})}/>
+                                                            <input type="radio" name="rdoInsrdGender" id="rdoInsrdGender_1" value="1" checked={form.gender === '1'} onChange={e => setForm({...form, 'gender': e.target.value})}/>
                                                             <label htmlFor="rdoInsrdGender_1" className="radio_btn01">남성</label>
                                                         </li>
                                                         <li className="gender-picker-list">
-                                                            <input type="radio" name="rdoInsrdGender" id="rdoInsrdGender_2" value="2" onChange={e => setForm({...form, 'gender': e.target.value})}/>
+                                                            <input type="radio" name="rdoInsrdGender" id="rdoInsrdGender_2" value="2" checked={form.gender === '2'} onChange={e => setForm({...form, 'gender': e.target.value})}/>
                                                             <label htmlFor="rdoInsrdGender_2" className="radio_btn01">여성</label>
                                                         </li>
                                                     </ul>
@@ -260,7 +268,7 @@ const Join = (props) => {
                     </button>
                 </div>
             </section>
-        </div>
+        </>
     );
 }
 

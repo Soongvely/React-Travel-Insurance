@@ -1,11 +1,7 @@
 
-import ReactModal from 'react-modal';
-ReactModal.setAppElement('*'); 
-
-
-const Purpose = ({isOpen, close, type, click}) => {
+const Purpose = ({ type, callback, close }) => {
   return (
-        <ReactModal isOpen={isOpen} className={isOpen ? "popup-wrap purpose-modal open" : "popup-wrap purpose-modal"}>
+        <div className="popup-wrap purpose-modal open">
           <div className="popup-bg"></div>
           <div className="popup type-middle">
             <div className="pop-header">
@@ -14,7 +10,7 @@ const Purpose = ({isOpen, close, type, click}) => {
             </div>
             <div className="pop-body tit-line2">
               <div className="ui-scroll">
-                <div className="pop-contents" onClick={click} data-pop="box">
+                <div className="pop-contents" onClick={callback} data-pop="box">
                   <div className={`select-list purpose-list ${type === "1" && 'current'}`}>
                     <div className="select_item"><input id="purpose_1_1" value="travel" type="radio" name="purpose" /><label htmlFor="purpose_1_1">여행/관광</label></div>
                     <div className="select_item"><input id="purpose_1_2" value="buss_trip" type="radio" name="purpose"/><label htmlFor="purpose_1_2">업무/출장</label></div>
@@ -35,7 +31,7 @@ const Purpose = ({isOpen, close, type, click}) => {
               </div>
             </div>
           </div>
-        </ReactModal>
+          </div>
     );
 }
 

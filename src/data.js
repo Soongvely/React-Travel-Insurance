@@ -1,4 +1,5 @@
-[
+
+export const dataList = [
     {
         "message": null,
         "prem": 22470,

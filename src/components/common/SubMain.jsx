@@ -1,17 +1,16 @@
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 /**
  * PC 서브메인
  * @returns 
  */
 const PcSubMain = () => {
-    const location = useLocation();
-    const page = (location.pathname).replace('/travel/', '');
+    const { form } = useSelector(state => state.setter);
 
     return (
         <aside className="left">
              {/** 해외여행 */}
-            <div className={`left-pdt-details overseas ${page === 'overseas' ? 'current' : ''}`}>
+            <div className={`left-pdt-details overseas ${form.page === 'overseas' ? 'current' : ''}`}>
                 <div className="top-banner">
                 <div className="top-txt">
                     <p>해외갈 때 꼭 챙기세요!</p>
@@ -31,8 +30,10 @@ const PcSubMain = () => {
                     <img src="/images/travel/jinsol/intro.png" alt=""></img>
                 </div>
                 <div className="button-wrap">
-                    <button type="button" className="btn js-click-modal" data-modal="obligations-overseas-modal">알아두실 사항</button>
-                    <button type="button" className="btn-view-terms"><span>약관보기</span></button>
+                    <button type="button" className="btn js-click-modal" data-modal="noteInfo">알아두실 사항</button>
+                    <button type="button" className="btn-view-terms">
+                        <span>약관보기</span>
+                    </button>
                 </div>
                 <div className="deliberation">
                     진솔아이엔에스(주) 대표자: 이승연
@@ -45,7 +46,7 @@ const PcSubMain = () => {
             </div>
 
              {/** 국내여행 */}
-            <div className={`left-pdt-details domestic ${page === 'domestic' ? 'current' : ''}`}>
+            <div className={`left-pdt-details domestic ${form.page === 'domestic' ? 'current' : ''}`}>
                 <div className="top-banner">
                 <div className="top-txt">
                     <p>안전한 여행, 국내여행이라고 잊지마세요</p>
@@ -86,13 +87,12 @@ const PcSubMain = () => {
  * @returns 
  */
 const MoSubMain = () => {
-    const location = useLocation();
-    const page = (location.pathname).replace('/travel/', '');
+    const { form } = useSelector(state => state.setter);
 
     return (
         <aside className="left left-mo" style={{marginTop:"62px"}}>
             {/** 해외여행 */}
-            <div className={`left-pdt-details overseas  ${page === 'overseas' ? 'current' : ''}`}>
+            <div className={`left-pdt-details overseas  ${form.page === 'overseas' ? 'current' : ''}`}>
                 <div className="top-banner">
                     <div className="top-txt">
                     <p>해외갈 때 꼭 챙기세요!</p>
@@ -127,7 +127,7 @@ const MoSubMain = () => {
             </div>
             
             {/** 국내여행 */}
-            <div className={`left-pdt-details domestic ${page === 'domestic' ? 'current' : ''}`}>
+            <div className={`left-pdt-details domestic ${form.page === 'domestic' ? 'current' : ''}`}>
                 <div className="top-banner">
                     <div className="top-txt">
                     <p>안전한 여행, 국내여행이라고 잊지마세요</p>

@@ -1,11 +1,7 @@
 
-import React from 'react';
-import ReactModal from 'react-modal';
-ReactModal.setAppElement('*'); 
-
-const Country = ({isOpen, close, click}) => {
+const Country = ({ close, callback }) => {
     return (
-        <ReactModal isOpen={isOpen} className={isOpen ? "popup-wrap country-modal open" : "popup-wrap country-modal"}> {/*className={`popup-wrap country-modal ${{isOpen} && 'open'} `}*/}
+        <div className="popup-wrap country-modal open"> 
             <div className="popup-bg"></div>
             <div className="popup type-middle">
                 <div className="pop-header">
@@ -15,7 +11,7 @@ const Country = ({isOpen, close, click}) => {
                 <div className="pop-body tit-line2">
                     <div className="ui-scroll">
                         <div className="pop-contents">
-                            <div className="select-list country-list" data-pop="box" onClick={click} style={{maxHeight: "350px", height: "360px", "overflowY": "scroll"}}>
+                            <div className="select-list country-list" data-pop="box" onClick={callback} style={{maxHeight: "350px", height: "360px", "overflowY": "scroll"}}>
                                 <p className="teddyx-color" onClick={e => e.stopPropagation()}>주요국가</p>
                                 <div className="select_item"><input id="CA" value="CA" type="radio" name="country" /><label htmlFor="CA">캐나다</label></div>
                                 <div className="select_item"><input id="US" value="US" type="radio" name="country" /><label htmlFor="US">미국</label></div>
@@ -273,7 +269,7 @@ const Country = ({isOpen, close, click}) => {
                     </div>
                 </div>
             </div>
-        </ReactModal>
+        </div>
     );
 }
 

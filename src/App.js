@@ -1,30 +1,18 @@
 
-import React, { useState }  from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { PcHeader } from './components/common/Header.jsx'; // PC 공통헤더
+import { PcHeader } from './components/common/Header.jsx'; // PC 공통헤더 컴포넌트
 import Overseas from './pages/Overseas.jsx';
 import Domestic from './pages/Domestic.jsx';
 import Join from './pages/Join.jsx';
 import Plan from './pages/Plan.jsx';
+import GlobalModal from './components/modals/GlobalModal.tsx';  // 전역 모달 컴포넌트
 
 function App() {
-  
-  const moment = require('moment'),
-        today = moment(); 
-
-  // 폼 입력값 객체
-   const [form, setForm] = useState({
-    strDt   : today.format('YYYY-MM-DD'),
-    endDt   : today.add(21, 'days').format('YYYY-MM-DD'),
-    strTm   : '00',
-    endTm   : '23',
-    purpose : '',
-    country : '',
-    checkYn : '',
-  });
-
   return (
     <div className="App">
+      {/* Global Modal */}
+      <GlobalModal />
+      
       <div id="wrap">
         <div className="container">
           {/* common-header */}
@@ -33,10 +21,10 @@ function App() {
           <main className="section01">
             <div className="main">
               <Routes>
-                <Route path="/travel/overseas" element={<Overseas form={form} setForm={setForm}/>}></Route> {/** 해외여행 입력 폼 */}
-                <Route path="/travel/domestic" element={<Domestic form={form} setForm={setForm}/>}></Route> {/** 국내여행 입력 폼 */}
-                <Route path="/travel/join" element={<Join form={form} setForm={setForm}/>}></Route> {/** 가입자 정보 입력 폼 */}
-                <Route path="/travel/plan" element={<Plan form={form} setForm={setForm}/>}></Route> {/** 플랜 선택 폼 */}
+                <Route path="/travel/overseas" element={<Overseas/>}></Route> {/** 해외여행 입력 폼 */}
+                <Route path="/travel/domestic" element={<Domestic/>}></Route> {/** 국내여행 입력 폼 */}
+                <Route path="/travel/join" element={<Join/>}></Route> {/** 가입자 정보 입력 폼 */}
+                <Route path="/travel/plan" element={<Plan/>}></Route> {/** 플랜 선택 폼 */}
               </Routes>
             </div>
           </main> 
