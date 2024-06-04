@@ -57,6 +57,6 @@
   },
   "devDependencies": {
     "@types/react-datepicker": "^6.2.0"
-  },
-  "homepage": "/travel/overseas"
+  }
+  
 }

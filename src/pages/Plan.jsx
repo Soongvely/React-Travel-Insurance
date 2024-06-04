@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MoHeader } from '../components/common/Header.jsx';     // 공통헤더
 import { PcSubStep } from '../components/common/SubStep.jsx';   // 사이드영역
 import { useDispatch, useSelector } from 'react-redux';
 import { setJoinInfo } from '../reducers/setter.js';
 import { comUtil } from '../js/util.js';
+import useModal from '../reducers/useModal.js';
 
 /**
  * 플랜 선택
@@ -15,6 +15,10 @@ const Plan = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // 커스텀 모달 훅
+    const { showModal, hideModal } = useModal();
+    
+    // store state form객체
     const { form } = useSelector(state => state.setter);
     const setForm = obj => dispatch(setJoinInfo(obj));
 
@@ -33,24 +37,20 @@ const Plan = () => {
         return `${comUtil.getTripDate({strDt, endDt, strTm, endTm})}일`;
     }
 
-    /**
-     * Modal Variable
-     */
-    const [isOpen1, setIsOpen1] = useState(false),
-          [countryInfo, setcountryInfo] = useState({value:'', text: '처음 여행하는 국가', clssNm:'slct'});
+    const modalHandler = () => {
+        // 여행국가선택안내
+        showModal({
+            modalType: "CountryInfoModal",
+            modalProps: {
+                close: hideModal,
+            }
+        });
+    }
 
-    /**
-     * Modal Function
-     */
-    const modal = {
-        // 모달팝업 열기
-        open : (e) => {
-        },
-        // 모달팝업 닫기
-        close: (e) => {
-        }
-    };
-    
+    //플랜아이디별 필터
+    const planA = form.insInfo.filter(plan => plan.planNo === "OT4711");
+    const planB = form.insInfo.filter(plan => plan.planNo === "OT4712");
+console.log(planA, planB);
     return (
         <>
             <PcSubStep/>
@@ -84,7 +84,7 @@ const Plan = () => {
                                                         <div className="radio"></div>
                                                         <h3 className="plan-name">든든</h3>
                                                     </div>
-                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="plan-details-modal">보장 자세히 보기</div>
+                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="plan-details-modal" onClick={modalHandler}>보장 자세히 보기</div>
                                                 </div>
                                                 <div className="plan-info">
                                                     <div>

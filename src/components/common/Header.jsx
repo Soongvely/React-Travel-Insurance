@@ -14,7 +14,7 @@ const PcHeader = () => {
                     </button>
                 </Link>
                 <div className="header-inner">
-                <a href="/travel/shinhan">
+                <a href="/travel/overseas">
                     <img className="shinhan-logo logo" src="/images/travel/jinsol/jinsol-logo.jpg" alt="진솔아이엔에스" style={{position: "relative"}}></img>
                 </a>
                 </div>

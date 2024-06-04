@@ -31,9 +31,7 @@ const PcSubMain = () => {
                 </div>
                 <div className="button-wrap">
                     <button type="button" className="btn js-click-modal" data-modal="noteInfo">알아두실 사항</button>
-                    <button type="button" className="btn-view-terms">
-                        <span>약관보기</span>
-                    </button>
+                    <button type="button" className="btn-view-terms"><span>약관보기</span></button>
                 </div>
                 <div className="deliberation">
                     진솔아이엔에스(주) 대표자: 이승연
@@ -63,7 +61,7 @@ const PcSubMain = () => {
                 </div>
                 <div className="bottom-banner">
                 <div className="intro" style={{marginTop:'15px'}}>
-                    <img src="/images/travel/jinsol/intro-domestic.png" alt=""></img>
+                    <img src={require("../../images/travel/jinsol/intro-domestic.png").default} alt=""></img>
                 </div>
                 <div className="button-wrap">
                     <button type="button" className="btn js-click-modal" data-modal="obligations-domestic-modal">알아두실 사항</button>
