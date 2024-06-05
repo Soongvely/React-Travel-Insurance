@@ -6,12 +6,12 @@ const Country = ({ close, callback }) => {
             <div className="popup type-middle">
                 <div className="pop-header">
                     <h1 className="pop-title">여행국가 선택</h1>
-                    <button type="button" className="btn-close" data-pop="country" onClick={close}><span>닫기</span></button>
+                    <button type="button" className="btn-close" onClick={close}><span>닫기</span></button>
                 </div>
                 <div className="pop-body tit-line2">
                     <div className="ui-scroll">
                         <div className="pop-contents">
-                            <div className="select-list country-list" data-pop="box" onClick={callback} style={{maxHeight: "350px", height: "360px", "overflowY": "scroll"}}>
+                            <div className="select-list country-list" data-target="country" onClick={callback} style={{maxHeight: "350px", height: "360px", "overflowY": "scroll"}}>
                                 <p className="teddyx-color" onClick={e => e.stopPropagation()}>주요국가</p>
                                 <div className="select_item"><input id="CA" value="CA" type="radio" name="country" /><label htmlFor="CA">캐나다</label></div>
                                 <div className="select_item"><input id="US" value="US" type="radio" name="country" /><label htmlFor="US">미국</label></div>

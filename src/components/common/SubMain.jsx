@@ -10,7 +10,7 @@ const PcSubMain = () => {
     return (
         <aside className="left">
              {/** 해외여행 */}
-            <div className={`left-pdt-details overseas ${form.page === 'overseas' ? 'current' : ''}`}>
+            <div className={`left-pdt-details overseas ${form.insType === 'overseas' ? 'current' : ''}`}>
                 <div className="top-banner">
                 <div className="top-txt">
                     <p>해외갈 때 꼭 챙기세요!</p>
@@ -44,7 +44,7 @@ const PcSubMain = () => {
             </div>
 
              {/** 국내여행 */}
-            <div className={`left-pdt-details domestic ${form.page === 'domestic' ? 'current' : ''}`}>
+            <div className={`left-pdt-details domestic ${form.insType === 'domestic' ? 'current' : ''}`}>
                 <div className="top-banner">
                 <div className="top-txt">
                     <p>안전한 여행, 국내여행이라고 잊지마세요</p>
@@ -61,7 +61,7 @@ const PcSubMain = () => {
                 </div>
                 <div className="bottom-banner">
                 <div className="intro" style={{marginTop:'15px'}}>
-                    <img src={require("../../images/travel/jinsol/intro-domestic.png").default} alt=""></img>
+                    <img src="/images/travel/jinsol/intro-domestic.png" alt=""></img>
                 </div>
                 <div className="button-wrap">
                     <button type="button" className="btn js-click-modal" data-modal="obligations-domestic-modal">알아두실 사항</button>
@@ -90,7 +90,7 @@ const MoSubMain = () => {
     return (
         <aside className="left left-mo" style={{marginTop:"62px"}}>
             {/** 해외여행 */}
-            <div className={`left-pdt-details overseas  ${form.page === 'overseas' ? 'current' : ''}`}>
+            <div className={`left-pdt-details overseas  ${form.insType === 'overseas' ? 'current' : ''}`}>
                 <div className="top-banner">
                     <div className="top-txt">
                     <p>해외갈 때 꼭 챙기세요!</p>
@@ -125,7 +125,7 @@ const MoSubMain = () => {
             </div>
             
             {/** 국내여행 */}
-            <div className={`left-pdt-details domestic ${form.page === 'domestic' ? 'current' : ''}`}>
+            <div className={`left-pdt-details domestic ${form.insType === 'domestic' ? 'current' : ''}`}>
                 <div className="top-banner">
                     <div className="top-txt">
                     <p>안전한 여행, 국내여행이라고 잊지마세요</p>

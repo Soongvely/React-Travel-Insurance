@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MoHeader } from '../components/common/Header.jsx';     // 공통헤더
 import { PcSubStep } from '../components/common/SubStep.jsx';   // 사이드영역
 import { useDispatch, useSelector } from 'react-redux';
 import { setJoinInfo } from '../reducers/setter.js';
 import { comUtil } from '../js/util.js';
-import useModal from '../reducers/useModal.js';
+import useModal from '../reducers/useModal.ts';
+import { dataList } from '../data.js';
+import axios from 'axios';
 
 /**
  * 플랜 선택
@@ -22,7 +25,18 @@ const Plan = () => {
     const { form } = useSelector(state => state.setter);
     const setForm = obj => dispatch(setJoinInfo(obj));
 
-    const handleRadio = (e) => {
+    // 간편 보험료 계산
+    useEffect(() => {insCalculation()}, []);
+    
+    // 보험기간 계산
+    const getTripDate = () => {
+        let { strDt, endDt, strTm, endTm } = form;
+        
+        return `${comUtil.getTripDate({strDt, endDt, strTm, endTm})}일`;
+    }
+    
+    // 플랜 라디오버튼 핸들러
+    const radioHandler = (e) => {
         let label = e.currentTarget.closest('label'),
             input = label.previousSibling;
 
@@ -30,29 +44,51 @@ const Plan = () => {
         setForm({...form, plan: input.value});
     }
 
-    // 보험기간 계산
-    const getTripDate = () => {
-        let { strDt, endDt, strTm, endTm } = form;
-        
-        return `${comUtil.getTripDate({strDt, endDt, strTm, endTm})}일`;
-    }
-
-    const modalHandler = () => {
+    // 보장내역 모달 핸들러
+    const modalHandler = (e) => {
         // 여행국가선택안내
         showModal({
-            modalType: "CountryInfoModal",
+            modalType: "PlanDetail",
             modalProps: {
+                list : [...form.insInfo.planA, ...form.insInfo.planB],
+                insType: form.insType,
                 close: hideModal,
             }
         });
     }
 
-    //플랜아이디별 필터
-    const planA = form.insInfo.filter(plan => plan.planNo === "OT4711");
-    const planB = form.insInfo.filter(plan => plan.planNo === "OT4712");
-console.log(planA, planB);
+    // 간편 보험료계산
+    const insCalculation = async () => {
+        const { birth, gender, strDt, endDt, strTm, endTm } = form;
+
+        const param = {
+            "birthRep"  : birth,    // 생년월일
+            "gender"    : gender,   // 성별
+            "startDate" : comUtil.formatDate(form.strDt, '-'),               // 출발일자(YYYY-MM-DD)
+            "tripDate"  : comUtil.getTripDate({strDt, endDt, strTm, endTm}), // 보험기간(여행기간)    
+            "planSqe"   : new Date().getFullYear(),                          // 플랜일련번호(연도)
+        };
+
+        // call axios
+        //let result = await axios.post("/common/selectInsuList", param)
+        //                        .catch(err => comPop.msg.warn(`[${err?.response?.status}]\n보험료계산 중 오류가 발생했습니다.`));
+        
+        let result = dataList;
+        if (Array.isArray(result) && result.length) {
+            // 든든플랜
+            const planA = result.filter(plan => plan.planNo === "OT4711");
+            // 안심플랜
+            const planB = result.filter(plan => plan.planNo === "OT4712");
+            // form 객체에 저장
+            setForm({...form, insInfo: {planA, planB}});
+        }
+    }
+
+    
+
     return (
         <>
+            {/* PC 사이드 스탭 */}
             <PcSubStep/>
             <section className="right">
                 <div className="scrollarea">
@@ -76,15 +112,15 @@ console.log(planA, planB);
                             <form className="intro-form">
                                 <div className="plans-choice-wrap isWithDomestic">
                                     <div className="plans-choice-inner">
-                                        <input type="radio" id="insurance0" name="plan-version" value="0" defaultChecked={form.plan === '0'}/>
+                                        <input type="radio" id="insurance0" name="plan-version" value="0" defaultChecked={form.planCd === '0'}/>
                                         <label forhtml="insurance0">
-                                            <div className="plan-choice-box" onClick={handleRadio}>
+                                            <div className="plan-choice-box" onClick={radioHandler}>
                                                 <div className="plan-title-wrap">
                                                     <div className="plan-title">
                                                         <div className="radio"></div>
                                                         <h3 className="plan-name">든든</h3>
                                                     </div>
-                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="plan-details-modal" onClick={modalHandler}>보장 자세히 보기</div>
+                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="planA" onClick={modalHandler}>보장 자세히 보기</div>
                                                 </div>
                                                 <div className="plan-info">
                                                     <div>
@@ -95,7 +131,7 @@ console.log(planA, planB);
                                                     <div className="plan-price-box" style={{display: "flex", "gap": "0 4px"}}>
                                                         <div className="plan-price">
                                                             <span className="price-tot">
-                                                                <span className="price-tot-num">22,640</span>원
+                                                                <span className="price-tot-num">{comUtil.setComma(form.insInfo.planA[0].prem)}</span>원
                                                             </span>
                                                         </div>
                                                     </div>
@@ -106,15 +142,15 @@ console.log(planA, planB);
                                 </div>
                                 <div className="plans-choice-wrap isWithDomestic">
                                     <div className="plans-choice-inner">
-                                        <input type="radio" id="insurance2" name="plan-version" value="2" defaultChecked={form.plan === '2'}/>
+                                        <input type="radio" id="insurance2" name="plan-version" value="2" defaultChecked={form.planCd === '2'}/>
                                         <label forhtml="insurance2">
-                                            <div className="plan-choice-box" onClick={handleRadio}>
+                                            <div className="plan-choice-box" onClick={radioHandler}>
                                                 <div className="plan-title-wrap">
                                                     <div className="plan-title">
                                                         <div className="radio"></div>
                                                         <h3 className="plan-name">안심</h3>
                                                     </div>
-                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="plan-details-modal">보장 자세히 보기</div>
+                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="planB">보장 자세히 보기</div>
                                                 </div>
                                                 <div className="plan-info">
                                                     <div>
@@ -125,37 +161,7 @@ console.log(planA, planB);
                                                     <div className="plan-price-box" style={{display: "flex", "gap": "0 4px"}}>
                                                         <div className="plan-price">
                                                             <span className="price-tot">
-                                                                <span className="price-tot-num">12,360</span>원
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className="plans-choice-wrap isWithoutDomestic" style={{display: "none"}}>
-                                    <div className="plans-choice-inner">
-                                        <input type="radio" id="insurance3" name="plan-version" value="3"/>
-                                        <label forhtml="insurance3">
-                                            <div className="plan-choice-box">
-                                                <div className="plan-title-wrap">
-                                                    <div className="plan-title">
-                                                        <div className="radio"></div>
-                                                        <h3 className="plan-name">안심<small>실손미포함</small></h3>
-                                                    </div>
-                                                    <div className="js-click-modal detail-overseas-modal-btn detail-insur-btn" data-modal="plan-details-modal">보장 자세히 보기</div>
-                                                </div>
-                                                <div className="plan-info">
-                                                    <div>
-                                                        <span></span>
-                                                        <span>N01. 여행자들의 선택</span>
-                                                        <span></span>
-                                                    </div>
-                                                    <div className="plan-price-box" style={{display:"flex", "gap": "0 4px"}}>
-                                                        <div className="plan-price">
-                                                            <span className="price-tot">
-                                                                <span className="price-tot-num">11,330</span>원
+                                                                <span className="price-tot-num">{comUtil.setComma(form.insInfo.planB[0].prem)}</span>원
                                                             </span>
                                                         </div>
                                                     </div>

@@ -17,6 +17,7 @@ const Overseas = () => {
     const navigate = useNavigate();
     const dispatch =  useDispatch();
     
+    // 커스텀 모달 훅
     const { showModal, hideModal } = useModal();
 
     // store state form객체
@@ -30,7 +31,8 @@ const Overseas = () => {
 
     // store state 업데이트 핸들러
     const setFormHandler = (e) => {
-        if (e.currentTarget.dataset.modal) {
+        debugger;
+        if (e.currentTarget.dataset.target) {
             if (e.target.nodeName  !== 'LABEL') return; 
 
             setForm({...form, [e.target.previousSibling.name]: e.target.textContent});
@@ -43,7 +45,7 @@ const Overseas = () => {
     }
 
     // 현재 페이지 정보 저장
-    useEffect(() => {setForm({...form, page: 'overseas'})}, []);
+    useEffect(() => {setForm({...form, insType: 'overseas'})}, []);
 
     // form객체가 변경될 때 마다 체크
     useEffect(() => {
@@ -60,7 +62,7 @@ const Overseas = () => {
         // 여행목적
         purpose: () => {
             showModal({
-                modalType: "PurposeModal",
+                modalType: "Purpose",
                 modalProps: {
                     type: "1",
                     close: hideModal,
@@ -71,7 +73,7 @@ const Overseas = () => {
         // 여행국가
         country: () => {
             showModal({
-                modalType: "CountryModal",
+                modalType: "Country",
                 modalProps: {
                     close: hideModal,
                     callback: setFormHandler,
@@ -81,7 +83,7 @@ const Overseas = () => {
         // 여행국가선택안내
         countryInfo: () => {
             showModal({
-                modalType: "CountryInfoModal",
+                modalType: "CountryInfo",
                 modalProps: {
                     close: hideModal,
                 }
@@ -221,13 +223,13 @@ const Overseas = () => {
                                     <ul className="col">
                                         <li className="purpose_cont">
                                         <h5>여행목적</h5>
-                                        <div className="input-div js-click-modal purpose-modal-btn" onClick={modalHandler.purpose} data-modal="purpose">
+                                        <div className="input-div js-click-modal purpose-modal-btn" onClick={modalHandler.purpose}>
                                             <div className={`placeholder ${form.purpose ? '' : 'slct'}`}>{form.purpose || '여행목적 선택'}</div>
                                         </div>
                                         </li>
                                         <li className="country_cont">
                                         <h5 className="js-click-modal countryInfo-modal-btn" onClick={modalHandler.countryInfo}>여행국가</h5>
-                                        <div className="input-div btn js-click-modal country-modal-btn" onClick={modalHandler.country}  data-modal="country">
+                                        <div className="input-div btn js-click-modal country-modal-btn" onClick={modalHandler.country}>
                                             <div className={`placeholder ${form.country ? '' : 'slct'}`}>{form.country || '처음 여행하는 국가'}</div>
                                         </div>
                                         </li>

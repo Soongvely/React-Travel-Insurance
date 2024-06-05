@@ -3,10 +3,41 @@ export const comUtil = () => {};
 
 const moment = require('moment');
 
+// 숫자 이외의 입력값 제거
 comUtil.onlyNum = (e) => {
     return e.currentTarget.value.replace(/[^0-9]/g, '');
 }
 
+// 숫자 콤마(,) 추가
+comUtil.setComma = (num) => {
+    if (!Number(num)) return;
+
+    return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',');    
+}
+
+// 숫자 단위 변환
+comUtil.setNumUnit = (num) => {
+    if (!Number(num)) return num;
+    
+    let splitUnit    = 10000;
+    let unitArr    = ['', '만', '억', '조', '경'];
+    let resultArr  = [];
+    let resultStr = '';
+
+    unitArr.map((str, i) => {
+        let unitResult = Math.floor((num % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i));
+        
+        if (unitResult) resultArr[i] = unitResult;
+    });
+    
+    resultArr.map((num, i) => {
+        if (num) resultStr = String(comUtil.setComma(num)) + unitArr[i] + resultStr;
+    });
+
+    return `${resultStr}원`;
+}
+
+// 날짜 포멧
 comUtil.formatDate = (param, format='') => {
     // YYYYMMDD 형식으로 변환
     const date = param.replace(/[-./]/g, '').replace(/\s/g, '');
@@ -16,18 +47,22 @@ comUtil.formatDate = (param, format='') => {
     }
 }
 
+// 시간 포멧 (오전 오후)
 comUtil.formatTime = (param) => {
     return param < 13 ? `오전 ${Number(param) ? Number(param) : 12}` : `오후 ${Number(param) - 12}`;
 }
 
+// 만나이 계산
 comUtil.getManAge = (birth) => {
     return moment().diff(moment(birth,'YYYYMMDD'), 'years');
 }
 
+// 보험나이 계산
 comUtil.getInsAge = (date, birth) => {
     return Math.round(moment(date, 'YYYYMMDD', true).diff(moment(birth, 'YYYYMMDD'), 'years', true));
 }
 
+// 생년월일 유효성 체크
 comUtil.checkBirth = (birth, type, showErr, target) => {
     const moment = require('moment');
 

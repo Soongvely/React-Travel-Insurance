@@ -5,20 +5,23 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { modalState } from "../../reducers/modal.tsx";
-import PurposeModal from "./Purpose.jsx";
-import CountryModal from "./Country.jsx";
-import CountryInfoModal from "./CountryInfo.jsx";
+import Purpose from "./Purpose.jsx";
+import Country from "./Country.jsx";
+import CountryInfo from "./CountryInfo.jsx";
+import PlanDetail from "./PlanDetail.jsx";
 
 export const MODAL_TYPES = {
-    PurposeModal: "PurposeModal",
-    CountryModal: "CountryModal",
-    CountryInfoModal: "CountryInfoModal",
+    Purpose   : "Purpose",
+    Country   : "Country",
+    CountryInfo: "CountryInfo",
+    PlanDetail : "PlanDetail",
   };
   
 const MODAL_COMPONENTS: any = {
-    [MODAL_TYPES.PurposeModal]: PurposeModal,
-    [MODAL_TYPES.CountryModal]: CountryModal,
-    [MODAL_TYPES.CountryInfoModal]: CountryInfoModal,
+    [MODAL_TYPES.Purpose]: Purpose,
+    [MODAL_TYPES.Country]: Country,
+    [MODAL_TYPES.CountryInfo]: CountryInfo,
+    [MODAL_TYPES.PlanDetail]: PlanDetail,
   };
   
 const GlobalModal = () => {

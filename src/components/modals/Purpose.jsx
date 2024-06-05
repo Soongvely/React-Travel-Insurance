@@ -6,11 +6,11 @@ const Purpose = ({ type, callback, close }) => {
           <div className="popup type-middle">
             <div className="pop-header">
               <h1 className="pop-title">여행목적 선택</h1>
-              <button type="button" className="btn-close" data-pop="purpose" onClick={close}><span>닫기</span></button>
+              <button type="button" className="btn-close" onClick={close}><span>닫기</span></button>
             </div>
             <div className="pop-body tit-line2">
               <div className="ui-scroll">
-                <div className="pop-contents" onClick={callback} data-pop="box">
+                <div className="pop-contents" onClick={callback} data-target="purpose">
                   <div className={`select-list purpose-list ${type === "1" && 'current'}`}>
                     <div className="select_item"><input id="purpose_1_1" value="travel" type="radio" name="purpose" /><label htmlFor="purpose_1_1">여행/관광</label></div>
                     <div className="select_item"><input id="purpose_1_2" value="buss_trip" type="radio" name="purpose"/><label htmlFor="purpose_1_2">업무/출장</label></div>

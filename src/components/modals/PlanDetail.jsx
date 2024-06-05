@@ -1,12 +1,42 @@
+import { groupBy } from 'lodash';
+import { comUtil } from '../../js/util';
 
-const PlanDetail = () => {
+const PlanDetail = ({ list, insType, close }) => {
+    
+    const rendering = () => {
+        const components = [];
+        const covrObj = groupBy(list, 'covrDivcd'); // 보장종류별 그룹화
+
+        Object.values(covrObj).map((arr, idx) => {
+            const prdObj = groupBy(arr, 'prdCd'); // 상품별 그룹화
+
+            components.push(
+                <tr className="all-tr first-tr" key={arr.covrDivcd}>
+                    <th colSpan="3">{arr[0].codeNm}</th>
+                </tr>
+            );
+
+            Object.values(prdObj).map(arr2 => {
+                components.push(
+                    <tr key={arr2.prdCd}>
+                        <th>{arr2[0].shrtPrdNm}</th>
+                        <td>{comUtil.setNumUnit(arr2[0].joinAmt)}</td>
+                        <td>{comUtil.setNumUnit(arr2[1]?.joinAmt)}</td>
+                    </tr>
+                );
+            }) 
+        });
+
+        return components;
+    }
+
     return (
-        <div className="popup-wrap plan-details-modal" style={{display: "block;"}}>
+        <div className="popup-wrap plan-details-modal" style={{display: "block"}}>
             <div className="popup-bg"></div>
             <div className="popup type-middle">
                 <div className="pop-header">
-                    <h1 className="pop-title">원하시는 플랜을 선택해 주세요</h1>
-                    <button type="button" className="btn-close"><span>닫기</span></button>
+                    <h1 className="pop-title">{`${insType === 'overseas' ? '해외' : '국내'}여행자보험` }</h1>
+                    <button type="button" className="btn-close" onClick={close}><span>닫기</span></button>
                 </div>
                 <div className="pop-body tit-line2">
                     <div className="ui-scroll">
@@ -31,28 +61,18 @@ const PlanDetail = () => {
                                         <caption> 기본 담보에 대한 담보별 표준플랜 및 고급플랜의 보험료</caption>
                                         <colgroup>
                                             <col/>
-                                            <col width="450"/>
-                                            <col width="450"/>
-                                            <col width="450"/>
+                                            <col width="660"/>
+                                            <col width="660"/>
                                         </colgroup>
                                         <thead>
                                             <tr>
-                                                <th scope="col" className="wide-width">
-                                                    담보명
-                                                </th>
+                                                <th scope="col" className="wide-width">담보명</th>
                                                 <th scope="col">든든</th>
-                                                <th>안심</th>
+                                                <th scope="col">안심</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="all-tr first-tr">
-                                                <th colspan="4">해외여행 중 입원/치료/처방 의료비</th>
-                                            </tr>
-                                            <tr>
-                                                <th>상해의료비</th>
-                                                <td>1억원</td>
-                                                <td>5,000만원</td>
-                                            </tr>
+                                            {rendering()}
                                         </tbody>
                                     </table>
                                 </div>
@@ -62,8 +82,8 @@ const PlanDetail = () => {
                                         <b>만 15세미만 미성년자녀는</b> 사망담보, 질병사망 및 80%이상후유장해 담보 가입을 제공하지 않습니다.
                                     </p>
                                 </div>
-
-                                <div className="ageCriteriaNoDomestic ageCriteriaWrapNoDomestic_1" style="display: block;">
+                                {/*
+                                <div className="ageCriteriaNoDomestic ageCriteriaWrapNoDomestic_1" style={{display: "block"}}>
                                     <div className="plan-title">
                                         <h2 className="insur-page-title" style={{color: "#0046ff", fontWeight: "600"}}>선택 담보 <span className="sub-txt">국내 실손 의료비(질병/상해)</span></h2>
                                     </div>
@@ -74,7 +94,6 @@ const PlanDetail = () => {
                                                 <col/>
                                                 <col width="660"/>
                                                 <col width="660"/>
-                                                <col width="660"/>
                                             </colgroup>
                                             <thead>
                                                 <tr>
@@ -83,12 +102,11 @@ const PlanDetail = () => {
                                                     </th>
                                                     <th scope="col">든든</th>
                                                     <th scope="col">안심</th>
-                                                    <th scope="col">실속</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr className="all-tr">
-                                                    <th colspan="4">해외여행으로 국내에서 치료,입원 등 의료비</th>
+                                                    <th colSpan="4">해외여행으로 국내에서 치료,입원 등 의료비</th>
                                                 </tr>
                                                 <tr>
                                                     <th>
@@ -101,6 +119,7 @@ const PlanDetail = () => {
                                         </table>
                                     </div>
                                 </div>
+                                */}
                             </div>
                         </div>
                     </div>

@@ -19,8 +19,8 @@ const initialState = {
         gender  : '',   // 성별
         checkYn : '',   // 여행 제한/금지 지역확인 체크여부
         insType : '',   // 보험 종류(해외/국내)
-        insInfo : [],   // 보험료계산 결과
-        plan    : '0',  // 가입플랜
+        insInfo : {},   // 보험료계산 결과
+        planCd  : '0',  // 가입플랜
     },
     modal : {
         show: false,			// 모달 표시 여부

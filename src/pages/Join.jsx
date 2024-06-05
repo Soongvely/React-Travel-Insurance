@@ -5,9 +5,6 @@ import { PcSubMain } from '../components/common/SubMain.jsx';  // 사이드영�
 import { comUtil } from '../js/util.js';
 import { comPop } from '../js/common.js';
 import { JoinJs } from '../js/join.js';
-import { dataList } from '../data.js';
-
-import axios from 'axios';
 import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
 import { setJoinInfo } from '../reducers/setter.js';
@@ -39,10 +36,8 @@ const Join = (props) => {
             checkBtnDisabled('','show');
             return false;
         } 
-        else {
-            // 간편 보험료계산
-            await insCalculation();
-        }
+        
+        navigate('/travel/plan');
     }
 
     useEffect(() => {
@@ -124,32 +119,6 @@ const Join = (props) => {
         */
 
         return isValidList ? insrdList : false;
-    }
-
-    // 간편 보험료계산
-    const insCalculation = async () => {
-        const { birth, gender, strDt, endDt, strTm, endTm } = form;
-
-        const param = {
-            "birthRep"  : birth,    // 생년월일
-            "gender"    : gender,   // 성별
-            "startDate" : comUtil.formatDate(form.strDt, '-'),               // 출발일자(YYYY-MM-DD)
-            "tripDate"  : comUtil.getTripDate({strDt, endDt, strTm, endTm}), // 보험기간(여행기간)    
-            "planSqe"   : new Date().getFullYear(),                          // 플랜일련번호(연도)
-        };
-
-        let result = dataList;
-        // call axios
-        //let result = await axios.post("/common/selectInsuList", param)
-        //                        .catch(err => comPop.msg.warn(`[${err?.response?.status}]\n보험료계산 중 오류가 발생했습니다.`));
-        
-        if (result) {
-            setForm({...form, insInfo: result});
-            
-            console.log(result);
-            // form 객체에 저장
-            navigate('/travel/plan');
-        }
     }
 
     return (
